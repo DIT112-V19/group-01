@@ -8,35 +8,51 @@ BrushedMotor rightMotor(12, 13, 11);
 DifferentialControl control(leftMotor, rightMotor);
 SoftwareSerial BTSerial(0,1);
 SimpleCar car(control);
+unsigned long time_now = 0;
 
 void setup() {
-  
+
   Serial.begin(9600);
-  
+
 }
 
-void loop() {
- 
-  while (Serial.available()>0){
+void loop()
+{
+  t = Serial.read();
+  Serial.println(t);
+  switch (t)
+  {
 
-    t=Serial.read();
-    Serial.println(t);
-  }
-  if (t=='w'){
+    case 'w':
+
+    time_now = millis();
+    while (millis() < time_now + 500) {
+    
     car.setSpeed(speedDrive);
-  }
-  if (t=='s'){
+    }
+    break;
+
+    case 's':
+
     car.setSpeed(-speedDrive);
-  }
-  if (t=='a'){
+    break;
+
+    case 'a':
+
     leftMotor.setSpeed(-speedDrive);
     rightMotor.setSpeed(speedDrive);
-  }
-  if (t=='d'){
+    break;
+
+    case 'd':
+
     leftMotor.setSpeed(speedDrive);
     rightMotor.setSpeed(-speedDrive);
-  }
-  else {
+    break;
+
+
+    case 't':
     car.setSpeed(0);
+    break;
   }
+
 }
