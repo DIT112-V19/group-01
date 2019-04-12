@@ -17,33 +17,38 @@ void setup() {
 
 void loop()
 {
-switch (Serial.available() > 0)
+  t = Serial.read();
+  Serial.println(t);
+switch (t)
   {
 
-    t = Serial.read();
-    Serial.printLn(t);
+    
 
-  case 1:
-    t == 'w';
+  case 'w':
+    
     car.setSpeed(speedDrive);
     break;
 
-  case 2:
-    t == 's';
+  case 's':
+    
     car.setSpeed(-speedDrive);
     break;
 
-  case 3:
-    t == 'a';
+  case 'a':
+ 
     leftMotor.setSpeed(-speedDrive);
     rightMotor.setSpeed(speedDrive);
     break;
 
-  case 4:
-    t == 'd';
+  case 'd':
+    
     leftMotor.setSpeed(speedDrive);
     rightMotor.setSpeed(-speedDrive);
     break;  
+
+
+    default:
+    car.setSpeed(0);
 
 
   }
