@@ -50,9 +50,9 @@ void loop()
     break;
 
 
-    default:
+    case 't':
     car.setSpeed(0);
-
+    break;
   }
 
 }
