@@ -15,6 +15,7 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.ListView;
 
 import java.nio.charset.Charset;
@@ -27,13 +28,14 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
 
     BluetoothAdapter mBluetoothAdapter;
     Button btnEnableDisable_Discoverable;
-
     BluetoothConnectionService mBluetoothConnection;
-
     Button btnStartConnection;
     Button btnSend;
-
     EditText etSend;
+    ImageButton upward_arrow ;
+    ImageButton downward_arrow;
+
+
 
     private static final UUID MY_UUID_INSECURE =
             //UUID.fromString("075efdf0-199f-43ac-b643-90cb838b2e49");
@@ -186,6 +188,8 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
         mBTDevices = new ArrayList<>();
 
         btnStartConnection = (Button) findViewById(R.id.btnStartConnection);
+        upward_arrow = (ImageButton) findViewById(R.id.arrows_UP);
+        downward_arrow = (ImageButton) findViewById(R.id.arrows_DOWN);
         btnSend = (Button) findViewById(R.id.btnSend);
         etSend = (EditText) findViewById(R.id.editText);
         //Broadcasts when bond state changes (ie:pairing)
@@ -195,6 +199,31 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
         mBluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
 
         lvNewDevices.setOnItemClickListener(MainActivity.this);
+
+
+        //These two methods are for testing if the up and down button responds by sending letters to the serial monitor of the car
+        upward_arrow.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String w = "w";
+                byte[] bytes = w.getBytes(Charset.defaultCharset());
+                mBluetoothConnection.write(bytes);
+
+
+
+            }
+        });
+        downward_arrow.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String w = "s";
+                byte[] bytes = w.getBytes(Charset.defaultCharset());
+                mBluetoothConnection.write(bytes);
+
+
+
+            }
+        });
 
 
         btnONOFF.setOnClickListener(new View.OnClickListener() {
