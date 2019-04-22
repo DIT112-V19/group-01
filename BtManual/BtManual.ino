@@ -38,7 +38,7 @@ void loop()
     rightMotor.setSpeed(-speedDrive);
     break;
 
-    case 't':
+    case 'x':
     car.setSpeed(0);
     break;
   }
