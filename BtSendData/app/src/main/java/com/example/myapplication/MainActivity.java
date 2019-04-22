@@ -36,6 +36,7 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
     ImageButton upward_arrow;
     ImageButton downward_arrow;
     ImageButton left_arrow;
+    ImageButton right_arrow;
 
 
     private static final UUID MY_UUID_INSECURE =
@@ -190,6 +191,7 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
         upward_arrow = (ImageButton) findViewById(R.id.arrows_UP);
         downward_arrow = (ImageButton) findViewById(R.id.arrows_DOWN);
         left_arrow = (ImageButton) findViewById(R.id.arrows_LEFT);
+        right_arrow = (ImageButton) findViewById(R.id.arrows_RIGHT);
 
         btnSend = (Button) findViewById(R.id.btnSend);
         etSend = (EditText) findViewById(R.id.editText);
@@ -226,6 +228,16 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
             @Override
             public void onClick(View v) {
                 String w = "a";
+                byte[] bytes = w.getBytes(Charset.defaultCharset());
+                mBluetoothConnection.write(bytes);
+            }
+        });
+
+
+        right_arrow.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String w = "d";
                 byte[] bytes = w.getBytes(Charset.defaultCharset());
                 mBluetoothConnection.write(bytes);
             }
