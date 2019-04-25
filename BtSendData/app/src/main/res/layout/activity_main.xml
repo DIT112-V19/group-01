@@ -41,7 +41,7 @@
     <ListView
         android:id="@+id/lvNewDevices"
         android:layout_width="match_parent"
-        android:layout_height="150dp"
+        android:layout_height="350dp"
         android:layout_below="@+id/btnFindUnpairedDevices"
         />
 
@@ -50,7 +50,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/btnFindUnpairedDevices"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="400dp"
         android:text="Start Connection"
         />
 
@@ -59,12 +59,14 @@
         android:layout_width="250dp"
         android:layout_height="wrap_content"
         android:layout_below="@+id/lvNewDevices"
+        android:layout_marginTop="200dp"
         android:layout_alignParentStart="true"
         android:hint="Enter text here"
         />
 
     <Button
         android:id="@+id/btnSend"
+        android:layout_marginTop="200dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@id/lvNewDevices"
