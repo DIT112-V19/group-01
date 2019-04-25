@@ -11,16 +11,27 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="play"
-       android:layout_marginTop="300dp"
+       android:layout_marginTop="400dp"
        android:layout_centerHorizontal="true"
         />
 
+
+    <Button
+        android:id="@+id/bluetooth"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Connect"
+
+        android:layout_marginTop="200dp"
+        android:layout_centerHorizontal="true"
+        />
     <Button
         android:id="@+id/alarm"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
 android:layout_centerHorizontal="true"
-        android:layout_marginTop="200dp"
+        android:layout_marginTop="300dp"
         android:text="Alarm" />
+
 
 </RelativeLayout>

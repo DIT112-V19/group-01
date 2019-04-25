@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".operatePage">
+
+
+
+    <ImageButton
+        android:id="@+id/arrows_UP"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="290dp"
+        android:padding="5dp"
+        android:src="@drawable/upward_arrow"
+        />
+
+    <ImageButton
+        android:id="@+id/arrows_DOWN"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="350dp"
+
+        android:padding="5dp"
+        android:src="@drawable/downward_arrow"
+        />
+
+    <ImageButton
+        android:id="@+id/arrows_LEFT"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="450dp"
+        android:padding="5dp"
+        android:src="@drawable/arrows_left"
+        />
+
+    <ImageButton
+        android:id="@+id/arrows_RIGHT"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="500dp"
+        android:padding="5dp"
+        android:src="@drawable/arrow_right"
+        />
+
+
+    <ImageButton
+        android:id="@+id/stopButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="100dp"
+        android:padding="10dp"
+        android:src="@drawable/stopbutton"
+        />
+
+
+</RelativeLayout>

@@ -37,6 +37,7 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
     ImageButton downward_arrow;
     ImageButton left_arrow;
     ImageButton right_arrow;
+    ImageButton stopbutton;
 
 
     private static final UUID MY_UUID_INSECURE =
@@ -192,6 +193,7 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
         downward_arrow = (ImageButton) findViewById(R.id.arrows_DOWN);
         left_arrow = (ImageButton) findViewById(R.id.arrows_LEFT);
         right_arrow = (ImageButton) findViewById(R.id.arrows_RIGHT);
+        stopbutton = (ImageButton) findViewById(R.id.stopButton);
 
         btnSend = (Button) findViewById(R.id.btnSend);
         etSend = (EditText) findViewById(R.id.editText);
@@ -205,7 +207,7 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
         lvNewDevices.setOnItemClickListener(MainActivity.this);
 
 
-        //These two methods are for testing if the up and down button responds by sending letters to the serial monitor of the car
+
         upward_arrow.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -243,6 +245,14 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
             }
         });
 
+        stopbutton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String w = "x";
+                byte[] bytes = w.getBytes(Charset.defaultCharset());
+                mBluetoothConnection.write(bytes);
+            }
+        });
         btnONOFF.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
