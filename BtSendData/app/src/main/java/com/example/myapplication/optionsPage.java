@@ -8,17 +8,27 @@ import android.widget.Button;
 
 public class optionsPage extends AppCompatActivity {
 
+    public Button alarm;
     public Button play;
 
 
     public void initialize(){
         play = (Button) findViewById(R.id.play);
+        alarm = (Button) findViewById(R.id.alarm);
 
         play.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
                 Intent intent = new Intent(optionsPage.this,MainActivity.class);
+                startActivity(intent);
+            }
+        });
+        alarm.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Intent intent = new Intent(optionsPage.this,alarmPage.class);
                 startActivity(intent);
             }
         });
