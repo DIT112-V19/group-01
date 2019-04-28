@@ -205,7 +205,15 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
         mBluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
 
         lvNewDevices.setOnItemClickListener(MainActivity.this);
-
+/*
+        downward_arrow.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String w = "s";
+                byte[] bytes = w.getBytes(Charset.defaultCharset());
+                mBluetoothConnection.write(bytes);
+            }
+        });
 
 
         upward_arrow.setOnClickListener(new View.OnClickListener() {
@@ -217,14 +225,7 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
             }
         });
 
-        downward_arrow.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                String w = "s";
-                byte[] bytes = w.getBytes(Charset.defaultCharset());
-                mBluetoothConnection.write(bytes);
-            }
-        });
+
 
         left_arrow.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -252,7 +253,7 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
                 byte[] bytes = w.getBytes(Charset.defaultCharset());
                 mBluetoothConnection.write(bytes);
             }
-        });
+        });*/
         btnONOFF.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
