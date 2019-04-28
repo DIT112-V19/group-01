@@ -33,11 +33,6 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
     Button btnSend;
     EditText etSend;
 
-    ImageButton upward_arrow;
-    ImageButton downward_arrow;
-    ImageButton left_arrow;
-    ImageButton right_arrow;
-    ImageButton stopbutton;
 
 
     private static final UUID MY_UUID_INSECURE =
@@ -189,11 +184,7 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
 
         btnStartConnection = (Button) findViewById(R.id.btnStartConnection);
 
-        upward_arrow = (ImageButton) findViewById(R.id.arrows_UP);
-        downward_arrow = (ImageButton) findViewById(R.id.arrows_DOWN);
-        left_arrow = (ImageButton) findViewById(R.id.arrows_LEFT);
-        right_arrow = (ImageButton) findViewById(R.id.arrows_RIGHT);
-        stopbutton = (ImageButton) findViewById(R.id.stopButton);
+
 
         btnSend = (Button) findViewById(R.id.btnSend);
         etSend = (EditText) findViewById(R.id.editText);
@@ -205,55 +196,8 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
         mBluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
 
         lvNewDevices.setOnItemClickListener(MainActivity.this);
-/*
-        downward_arrow.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                String w = "s";
-                byte[] bytes = w.getBytes(Charset.defaultCharset());
-                mBluetoothConnection.write(bytes);
-            }
-        });
 
 
-        upward_arrow.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                String w = "w";
-                byte[] bytes = w.getBytes(Charset.defaultCharset());
-                mBluetoothConnection.write(bytes);
-            }
-        });
-
-
-
-        left_arrow.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                String w = "a";
-                byte[] bytes = w.getBytes(Charset.defaultCharset());
-                mBluetoothConnection.write(bytes);
-            }
-        });
-
-
-        right_arrow.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                String w = "d";
-                byte[] bytes = w.getBytes(Charset.defaultCharset());
-                mBluetoothConnection.write(bytes);
-            }
-        });
-
-        stopbutton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                String w = "x";
-                byte[] bytes = w.getBytes(Charset.defaultCharset());
-                mBluetoothConnection.write(bytes);
-            }
-        });*/
         btnONOFF.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
