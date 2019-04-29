@@ -38,22 +38,16 @@ void setup() {
 
 // Loop code runs repeatedly
 void loop() {
-
+  measureDistance();
   setCarMoveForward();
-  if (front.getDistance() < 100 && distance > 0) {
-    car.setSpeed(0);
-    delay(2000);
+  if(distance < MAX_DISTANCE && distance > 0 ){
+    changeRandomDirection();
   }
+}
 
-  // delay(1000);
-  // // Get sensor distance measurement, in centimetre
-  // // if way is bloked, turn left or right randomly
-  // distance = front.getDistance();
-  // if(distance < MAX_DISTANCE && distance > 0 ){
-  //   car.overrideMotorSpeed(75, -75);
-  //   //delay so the car has enough time to turn
-  //   delay(500);
-  // }
+// Get sensor distance measurement, in centimetre
+void measureDistance(){
+  distance = front.getDistance();
 }
 
 void setCarMoveForward() {
@@ -61,12 +55,23 @@ void setCarMoveForward() {
   car.setSpeed(50);
 }
 
-void decideRandomDirection() {
-  if (random(0, 1) > 0.5) {
-    changeDirectionRight();
+float decideRandomNumber() {
+  return random(0, 1);
+}
+
+// if way is bloked, randomly choose left or right
+//and turn continuously until way is free
+void changeRandomDirection() {
+  if (decideRandomNumber() > 0.5) {
+    while (distance < MAX_DISTANCE && distance > 0 ) {
+      changeDirectionRight();
+      measureDistance();
+    };
   }
   else {
-    changeDirectionLeft();
+    while (distance < MAX_DISTANCE && distance > 0 ) {
+      changeDirectionLeft();
+    };
   }
 }
 
@@ -75,8 +80,6 @@ void changeDirectionRight() {
   car.overrideMotorSpeed(75, -75);
   //delay so the car has enough time to turn
   delay(500);
-  car.overrideMotorSpeed(50, 50);
-  setCarMoveForward();
 }
 
 void changeDirectionLeft() {
@@ -84,8 +87,6 @@ void changeDirectionLeft() {
   car.overrideMotorSpeed(-75, 75);
   //delay so the car has enough time to turn
   delay(500);
-  car.overrideMotorSpeed(0, 0);
-  car.setAngle(0);
 }
 
 // Set up of left and right odometers. Extracted from SmartCar example
