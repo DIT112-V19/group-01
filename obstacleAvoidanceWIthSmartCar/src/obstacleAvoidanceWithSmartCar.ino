@@ -22,7 +22,7 @@ SmartCar car(control, gyroscope, leftOdometer, rightOdometer);
 //variables for the obstacle avoidance
 const int TRIGGER_PIN = 6; //D6
 const int ECHO_PIN = 5; //D5
-const unsigned int MAX_DISTANCE = 30;
+const unsigned int MAX_DISTANCE = 35;
 SR04 front(TRIGGER_PIN, ECHO_PIN, MAX_DISTANCE);
 int distance;
 
@@ -40,53 +40,60 @@ void setup() {
 void loop() {
   measureDistance();
   setCarMoveForward();
+
+  // && distance > 0 because of Arduino sensor bug
   if(distance < MAX_DISTANCE && distance > 0 ){
+    stopCar();
     changeRandomDirection();
+  };
+}
+
+// Randomly chooses left or right and turn continuously until way is free
+void changeRandomDirection() {
+  float randomNumber = generateRandomNumber();
+  while (distance < MAX_DISTANCE && distance > 0 ) {
+    if (randomNumber > 4) {
+      changeDirectionRight();
+    }
+    else {
+      changeDirectionLeft();
+    };
+    measureDistance();
   }
+}
+
+long generateRandomNumber() {
+  return random(0, 10);
+}
+
+void changeDirectionRight() {
+  //Arguments(leftMotor speed capacity, rightMotor speed capacity)
+  car.overrideMotorSpeed(50, -50);
+  //delay so the car has enough time to turn
+  delay(150);
+  stopCar();
+}
+
+void changeDirectionLeft() {
+  //Arguments(leftMotor speed capacity, rightMotor speed capacity)
+  car.overrideMotorSpeed(-50, 50);
+  //delay so the car has enough time to turn
+  delay(150);
+  stopCar();
+}
+
+void setCarMoveForward() {
+  car.overrideMotorSpeed(40, 40);
+}
+
+void stopCar(){
+  car.overrideMotorSpeed(0, 0);
 }
 
 // Get sensor distance measurement, in centimetre
 void measureDistance(){
   distance = front.getDistance();
-}
-
-void setCarMoveForward() {
-  car.setAngle(0);
-  car.setSpeed(50);
-}
-
-float decideRandomNumber() {
-  return random(0, 1);
-}
-
-// if way is bloked, randomly choose left or right
-//and turn continuously until way is free
-void changeRandomDirection() {
-  if (decideRandomNumber() > 0.5) {
-    while (distance < MAX_DISTANCE && distance > 0 ) {
-      changeDirectionRight();
-      measureDistance();
-    };
-  }
-  else {
-    while (distance < MAX_DISTANCE && distance > 0 ) {
-      changeDirectionLeft();
-    };
-  }
-}
-
-void changeDirectionRight() {
-  //Arguments(leftMotor speed capacity, rightMotor speed capacity)
-  car.overrideMotorSpeed(75, -75);
-  //delay so the car has enough time to turn
-  delay(500);
-}
-
-void changeDirectionLeft() {
-  //Arguments(leftMotor speed capacity, rightMotor speed capacity)
-  car.overrideMotorSpeed(-75, 75);
-  //delay so the car has enough time to turn
-  delay(500);
+  Serial.println(distance);
 }
 
 // Set up of left and right odometers. Extracted from SmartCar example
