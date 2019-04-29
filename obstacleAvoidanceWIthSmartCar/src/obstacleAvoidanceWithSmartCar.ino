@@ -22,7 +22,7 @@ SmartCar car(control, gyroscope, leftOdometer, rightOdometer);
 //variables for the obstacle avoidance
 const int TRIGGER_PIN = 6; //D6
 const int ECHO_PIN = 5; //D5
-const unsigned int MAX_DISTANCE = 35;
+const unsigned int MAX_DISTANCE = 30;
 SR04 front(TRIGGER_PIN, ECHO_PIN, MAX_DISTANCE);
 int distance;
 
