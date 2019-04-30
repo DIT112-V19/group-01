@@ -16,8 +16,9 @@
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
         android:layout_alignParentRight="true"
-        android:text="ON/OFF"
-        />
+        android:layout_marginTop="481dp"
+        android:layout_marginRight="270dp"
+        android:text="ON/OFF" />
 
     <Button
         android:id="@+id/btnDiscoverable_on_off"
@@ -40,19 +41,17 @@
 
     <ListView
         android:id="@+id/lvNewDevices"
-        android:layout_width="match_parent"
-        android:layout_height="150dp"
-        android:layout_below="@+id/btnFindUnpairedDevices"
-        />
+        android:layout_width="354dp"
+        android:layout_height="218dp"
+        android:layout_below="@+id/btnFindUnpairedDevices" />
 
     <Button
         android:id="@+id/btnStartConnection"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/btnFindUnpairedDevices"
-        android:layout_marginTop="10dp"
-        android:text="Start Connection"
-        />
+        android:layout_marginTop="312dp"
+        android:text="Start Connection" />
 
     <EditText
         android:id="@+id/editText"
@@ -60,58 +59,28 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/lvNewDevices"
         android:layout_alignParentStart="true"
-        android:hint="Enter text here"
-        />
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="29dp"
+        android:hint="Enter text here" />
 
     <Button
         android:id="@+id/btnSend"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@id/lvNewDevices"
+        android:layout_marginLeft="19dp"
+        android:layout_marginTop="24dp"
         android:layout_toRightOf="@+id/editText"
-        android:text="Send"
-        />
-
+        android:text="Send" />
 
     <ImageButton
-        android:id="@+id/arrows_UP"
+        android:id="@+id/main_menu"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="290dp"
-        android:padding="5dp"
-        android:src="@drawable/upward_arrow"
+        android:src="@drawable/main_menu"
+     android:layout_marginLeft="320dp"
         />
 
-    <ImageButton
-        android:id="@+id/arrows_DOWN"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="350dp"
-        android:padding="5dp"
-        android:src="@drawable/downward_arrow"
-        />
-
-    <ImageButton
-        android:id="@+id/arrows_LEFT"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="450dp"
-        android:padding="5dp"
-        android:src="@drawable/arrows_left"
-        />
-
-    <ImageButton
-        android:id="@+id/arrows_RIGHT"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="500dp"
-        android:padding="5dp"
-        android:src="@drawable/arrow_right"
-        />
 
 
 </RelativeLayout>

@@ -32,11 +32,8 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
     Button btnStartConnection;
     Button btnSend;
     EditText etSend;
+    ImageButton mainMenu;
 
-    ImageButton upward_arrow;
-    ImageButton downward_arrow;
-    ImageButton left_arrow;
-    ImageButton right_arrow;
 
 
     private static final UUID MY_UUID_INSECURE =
@@ -51,6 +48,20 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
 
     ListView lvNewDevices;
 
+
+    private void initialize(){
+        mainMenu = findViewById(R.id.main_menu);
+
+        mainMenu.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Intent intent = new Intent(MainActivity.this,optionsPage.class);
+                startActivity(intent);
+            }
+        });
+
+    }
 
     // Create a BroadcastReceiver for ACTION_FOUND
     private final BroadcastReceiver mBroadcastReceiver1 = new BroadcastReceiver() {
@@ -188,10 +199,7 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
 
         btnStartConnection = (Button) findViewById(R.id.btnStartConnection);
 
-        upward_arrow = (ImageButton) findViewById(R.id.arrows_UP);
-        downward_arrow = (ImageButton) findViewById(R.id.arrows_DOWN);
-        left_arrow = (ImageButton) findViewById(R.id.arrows_LEFT);
-        right_arrow = (ImageButton) findViewById(R.id.arrows_RIGHT);
+
 
         btnSend = (Button) findViewById(R.id.btnSend);
         etSend = (EditText) findViewById(R.id.editText);
@@ -204,44 +212,7 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
 
         lvNewDevices.setOnItemClickListener(MainActivity.this);
 
-
-        //These two methods are for testing if the up and down button responds by sending letters to the serial monitor of the car
-        upward_arrow.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                String w = "w";
-                byte[] bytes = w.getBytes(Charset.defaultCharset());
-                mBluetoothConnection.write(bytes);
-            }
-        });
-
-        downward_arrow.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                String w = "s";
-                byte[] bytes = w.getBytes(Charset.defaultCharset());
-                mBluetoothConnection.write(bytes);
-            }
-        });
-
-        left_arrow.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                String w = "a";
-                byte[] bytes = w.getBytes(Charset.defaultCharset());
-                mBluetoothConnection.write(bytes);
-            }
-        });
-
-
-        right_arrow.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                String w = "d";
-                byte[] bytes = w.getBytes(Charset.defaultCharset());
-                mBluetoothConnection.write(bytes);
-            }
-        });
+        initialize();
 
         btnONOFF.setOnClickListener(new View.OnClickListener() {
             @Override
