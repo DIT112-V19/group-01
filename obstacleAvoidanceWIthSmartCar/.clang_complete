@@ -1,0 +1,21 @@
+-I/home/fredrik/.platformio/packages/framework-arduinoavr/cores/arduino
+-I/home/fredrik/.platformio/packages/framework-arduinoavr/variants/mega
+-I/home/fredrik/.platformio/lib/Servo_ID883/src
+-I/home/fredrik/.platformio/lib/Smartcar shield/src
+-I/home/fredrik/.platformio/packages/framework-arduinoavr/libraries/__cores__/arduino/Wire/src
+-I/home/fredrik/.platformio/packages/framework-arduinoavr/libraries/__cores__/arduino/EEPROM/src
+-I/home/fredrik/.platformio/packages/framework-arduinoavr/libraries/__cores__/arduino/HID/src
+-I/home/fredrik/.platformio/packages/framework-arduinoavr/libraries/__cores__/arduino/SPI/src
+-I/home/fredrik/.platformio/packages/framework-arduinoavr/libraries/__cores__/arduino/SoftwareSerial/src
+-I/home/fredrik/.platformio/packages/toolchain-atmelavr/avr/include
+-I/home/fredrik/.platformio/packages/toolchain-atmelavr/lib/gcc/avr/5.4.0/include-fixed
+-I/home/fredrik/.platformio/packages/toolchain-atmelavr/lib/gcc/avr/5.4.0/include
+-I/home/fredrik/.platformio/packages/tool-unity
+-I/home/fredrik/Documents/SEM/Miniproject : Systems Development/group-01/obstacleAvoidanceWIthSmartCar/include
+-I/home/fredrik/Documents/SEM/Miniproject : Systems Development/group-01/obstacleAvoidanceWIthSmartCar/src
+-DPLATFORMIO=30607
+-DARDUINO_AVR_MEGA2560
+-DF_CPU=16000000L
+-DARDUINO_ARCH_AVR
+-DARDUINO=10805
+-D__AVR_ATmega2560__

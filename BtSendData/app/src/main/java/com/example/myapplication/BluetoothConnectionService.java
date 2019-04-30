@@ -80,6 +80,7 @@ public class BluetoothConnectionService {
                 connected(socket,mmDevice);
             }
             Log.i(TAG, "END mAcceptThread");
+
         }
         public void cancel(){
             Log.d(TAG,"cancel: Canceling AcceptThread");

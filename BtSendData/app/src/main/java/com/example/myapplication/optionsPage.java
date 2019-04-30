@@ -13,6 +13,7 @@ public class optionsPage extends AppCompatActivity {
     public Button blueToothPage;
 
 
+
     public void initialize(){
         play = (Button) findViewById(R.id.play);
         alarm = (Button) findViewById(R.id.alarm);
