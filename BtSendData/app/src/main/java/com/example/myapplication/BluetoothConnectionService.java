@@ -32,7 +32,7 @@ public class BluetoothConnectionService {
     private BluetoothDevice mmDevice;
     private UUID deviceUUID;
     ProgressDialog mProgressDialog;
-    private ConnectedThread mConnectedThread;
+    private static ConnectedThread mConnectedThread;
 
     public BluetoothConnectionService(Context context){
         mContext = context;
@@ -259,7 +259,7 @@ public class BluetoothConnectionService {
      * @param out bytes to write
      * @see ConnectedThread#write(byte[])
      */
-    public void write(byte[] out) {
+    public static void write(byte[] out) {
         //Create temporary object
         ConnectedThread r;
 

@@ -7,6 +7,8 @@ import android.widget.ImageButton;
 
 import java.nio.charset.Charset;
 
+import static com.example.myapplication.BluetoothConnectionService.write;
+
 public class operatePage extends AppCompatActivity {
 
 
@@ -15,7 +17,7 @@ public class operatePage extends AppCompatActivity {
     ImageButton left_arrow;
     ImageButton right_arrow;
     ImageButton stopbutton;
-    MainActivity connectBluetoothBetweenActivities = new MainActivity();
+    MainActivity mBluetoothConnection = new MainActivity();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,7 +38,7 @@ public class operatePage extends AppCompatActivity {
             public void onClick(View v) {
                 String w = "s";
                 byte[] bytes = w.getBytes(Charset.defaultCharset());
-                connectBluetoothBetweenActivities.mBluetoothConnection.write(bytes);
+                write(bytes);
             }
         });
 
@@ -46,7 +48,7 @@ public class operatePage extends AppCompatActivity {
             public void onClick(View v) {
                 String w = "w";
                 byte[] bytes = w.getBytes(Charset.defaultCharset());
-                connectBluetoothBetweenActivities.mBluetoothConnection.write(bytes);
+                write(bytes);
             }
         });
 
@@ -57,7 +59,7 @@ public class operatePage extends AppCompatActivity {
             public void onClick(View v) {
                 String w = "a";
                 byte[] bytes = w.getBytes(Charset.defaultCharset());
-                connectBluetoothBetweenActivities.mBluetoothConnection.write(bytes);
+                write(bytes);
             }
         });
 
@@ -67,7 +69,7 @@ public class operatePage extends AppCompatActivity {
             public void onClick(View v) {
                 String w = "d";
                 byte[] bytes = w.getBytes(Charset.defaultCharset());
-                connectBluetoothBetweenActivities.mBluetoothConnection.write(bytes);
+                write(bytes);
             }
         });
 
@@ -76,7 +78,7 @@ public class operatePage extends AppCompatActivity {
             public void onClick(View v) {
                 String w = "x";
                 byte[] bytes = w.getBytes(Charset.defaultCharset());
-                connectBluetoothBetweenActivities.mBluetoothConnection.write(bytes);
+                write(bytes);
             }
         });
 
