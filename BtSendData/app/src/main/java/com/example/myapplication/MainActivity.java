@@ -32,6 +32,7 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
     Button btnStartConnection;
     Button btnSend;
     EditText etSend;
+    ImageButton mainMenu;
 
 
 
@@ -47,6 +48,20 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
 
     ListView lvNewDevices;
 
+
+    private void initialize(){
+        mainMenu = findViewById(R.id.main_menu);
+
+        mainMenu.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Intent intent = new Intent(MainActivity.this,optionsPage.class);
+                startActivity(intent);
+            }
+        });
+
+    }
 
     // Create a BroadcastReceiver for ACTION_FOUND
     private final BroadcastReceiver mBroadcastReceiver1 = new BroadcastReceiver() {
@@ -197,6 +212,7 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
 
         lvNewDevices.setOnItemClickListener(MainActivity.this);
 
+        initialize();
 
         btnONOFF.setOnClickListener(new View.OnClickListener() {
             @Override

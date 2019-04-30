@@ -16,8 +16,9 @@
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
         android:layout_alignParentRight="true"
-        android:text="ON/OFF"
-        />
+        android:layout_marginTop="481dp"
+        android:layout_marginRight="270dp"
+        android:text="ON/OFF" />
 
     <Button
         android:id="@+id/btnDiscoverable_on_off"
@@ -71,6 +72,14 @@
         android:layout_marginTop="24dp"
         android:layout_toRightOf="@+id/editText"
         android:text="Send" />
+
+    <ImageButton
+        android:id="@+id/main_menu"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/main_menu"
+     android:layout_marginLeft="320dp"
+        />
 
 
 
