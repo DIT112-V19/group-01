@@ -10,14 +10,14 @@ public class optionsPage extends AppCompatActivity {
 
     public Button alarm;
     public Button play;
-    public Button blueToothPage;
+
 
 
 
     public void initialize(){
         play = (Button) findViewById(R.id.play);
         alarm = (Button) findViewById(R.id.alarm);
-        blueToothPage = (Button) findViewById(R.id.bluetooth);
+
 
         play.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -32,14 +32,6 @@ public class optionsPage extends AppCompatActivity {
             public void onClick(View v) {
 
                 Intent intent = new Intent(optionsPage.this,alarmPage.class);
-                startActivity(intent);
-            }
-        });
-        blueToothPage.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-                Intent intent = new Intent(optionsPage.this,MainActivity.class);
                 startActivity(intent);
             }
         });
