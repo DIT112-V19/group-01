@@ -16,8 +16,8 @@
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
         android:layout_alignParentRight="true"
-        android:layout_marginTop="481dp"
-        android:layout_marginRight="270dp"
+        android:layout_marginTop="365dp"
+        android:layout_marginRight="116dp"
         android:text="ON/OFF" />
 
     <Button
@@ -73,13 +73,12 @@
         android:layout_toRightOf="@+id/editText"
         android:text="Send" />
 
-    <ImageButton
-        android:id="@+id/main_menu"
+    <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:src="@drawable/main_menu"
-     android:layout_marginLeft="320dp"
-        />
+        android:id="@+id/Continue"
+        android:text="Continue"
+        android:layout_marginTop="420dp"/>
 
 
 
