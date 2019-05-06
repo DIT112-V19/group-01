@@ -5,6 +5,10 @@ DirectionlessOdometer leftOdometer(50), rightOdometer(60);
 const int LEFT_ODOMETER_PIN = 2;
 const int RIGHT_ODOMETER_PIN = 3;
 
+//pins for the button and the according LED
+const int buttonPin = 8;
+const int ledPin = 13;
+
 // Config of gyroscopePrintAngle
 //GYROSCOPE_OFFSET is set to 9 because of calibration purposes
 const int GYROSCOPE_OFFSET = 9;
@@ -26,10 +30,17 @@ const unsigned int MAX_DISTANCE = 30;
 SR04 front(TRIGGER_PIN, ECHO_PIN, MAX_DISTANCE);
 int distance;
 
+//variables for button
+int buttonState = 0;
+
 // Setup code runs once
 void setup() {
   Serial.begin(9600);
   odometerSetUp();
+
+  pinMode(ledPin, OUTPUT);
+  pinMode(buttonPin, INPUT);
+  attachInterrupt(0, pin_ISR, CHANGE);
 
   // Cruise Control controls the car speed in meters/second
   //using default PID values
@@ -48,6 +59,11 @@ void loop() {
   };
 }
 
+void pin_ISR() {
+	buttonState = digitalRead(buttonPin);
+	stopCar();
+	delay(5000);
+}
 // Randomly chooses left or right and turn continuously until way is free
 void changeRandomDirection() {
   float randomNumber = generateRandomNumber();
