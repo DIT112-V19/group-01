@@ -47,9 +47,6 @@ void setup() {
   pinMode(buttonPin, INPUT);
   attachInterrupt(0, pin_ISR, CHANGE);
 
-  // Cruise Control controls the car speed in meters/second
-  //using default PID values
-  // car.enableCruiseControl();
 }
 
 // Loop code runs repeatedly
@@ -92,7 +89,7 @@ long generateRandomNumber() {
 void changeDirectionRight() {
   //Arguments(leftMotor speed capacity, rightMotor speed capacity)
 	while (millis() < time_now + periodeA) {
-		car.overrideMotorSpeed(50, -50);
+		car.overrideMotorSpeed(50, 25);
 	}
   stopCar();
 }
@@ -100,7 +97,7 @@ void changeDirectionRight() {
 void changeDirectionLeft() {
   //Arguments(leftMotor speed capacity, rightMotor speed capacity)
   while (millis() < time_now + periodeA) {
-	  car.overrideMotorSpeed(-50, 50);
+	  car.overrideMotorSpeed(25, 50);
   }
   stopCar();
 }
