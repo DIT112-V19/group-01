@@ -30,6 +30,11 @@ const unsigned int MAX_DISTANCE = 30;
 SR04 front(TRIGGER_PIN, ECHO_PIN, MAX_DISTANCE);
 int distance;
 
+//variables for time measurement
+unsigned long time_now = 0;
+int periodeA = 150;
+int periodeStop = 5000;
+
 //variables for button
 int buttonState = 0;
 
@@ -59,10 +64,12 @@ void loop() {
   };
 }
 
+//interrupt = when the button is pressed, this code will be executed as fast as possible
 void pin_ISR() {
 	buttonState = digitalRead(buttonPin);
-	stopCar();
-	delay(5000);
+	while (millis() < time_now + periodeStop) {
+		stopCar();
+	}
 }
 // Randomly chooses left or right and turn continuously until way is free
 void changeRandomDirection() {
@@ -84,17 +91,17 @@ long generateRandomNumber() {
 
 void changeDirectionRight() {
   //Arguments(leftMotor speed capacity, rightMotor speed capacity)
-  car.overrideMotorSpeed(50, -50);
-  //delay so the car has enough time to turn
-  delay(150);
+	while (millis() < time_now + periodeA) {
+		car.overrideMotorSpeed(50, -50);
+	}
   stopCar();
 }
 
 void changeDirectionLeft() {
   //Arguments(leftMotor speed capacity, rightMotor speed capacity)
-  car.overrideMotorSpeed(-50, 50);
-  //delay so the car has enough time to turn
-  delay(150);
+  while (millis() < time_now + periodeA) {
+	  car.overrideMotorSpeed(-50, 50);
+  }
   stopCar();
 }
 
