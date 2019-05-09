@@ -30,8 +30,10 @@ const unsigned int MAX_DISTANCE = 30;
 
 SR04 back (TRIGGER_PIN_REAR, ECHO_PIN_REAR, MAX_DISTANCE);
 SR04 front(TRIGGER_PIN, ECHO_PIN, MAX_DISTANCE);
-int distanceFront = 0;
-int distanceBack = 0 ;
+
+//setting variables to 0 so they'll give correct value
+int distanceFront=0;
+int distanceBack=0;
 
 
 
