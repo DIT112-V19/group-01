@@ -27,12 +27,13 @@ const unsigned int MAX_DISTANCE = 30;
 SR04 front(TRIGGER_PIN, ECHO_PIN, MAX_DISTANCE);
 int distance;
 
-const int buttonPin = 7;
-volatile int buttonState = 0;
+
 // Setup code runs once
 void setup() {
-  Serial.begin(9600);
-  odometerSetUp();
+	pinMode(4, INPUT_PULLUP);
+	pinMode(13, OUTPUT);
+	Serial.begin(9600);
+	odometerSetUp();
 
   // Cruise Control controls the car speed in meters/second
   //using default PID values
@@ -41,14 +42,16 @@ void setup() {
 
 // Loop code runs repeatedly
 void loop() {
-	buttonState = digitalRead(buttonPin);
-	if (buttonState == HIGH) {
-		stopCar;
-		delay(1500);
-	}
-	else {
+	int sensorVal = digitalRead(4);
+	Serial.println(sensorVal);
+
+	if (sensorVal == LOW) {
 		measureDistance();
 		setCarMoveForward();
+	}
+	else {
+		stopCar;
+		delay(1500);
 	}
   
   // && distance > 0 because of Arduino sensor bug
@@ -58,11 +61,6 @@ void loop() {
   };
 }
 
-void pin_ISR() {
-	buttonState = digitalRead(buttonPin);
-	stopCar;
-	
-}
 
 // Randomly chooses left or right and turn continuously until way is free
 void changeRandomDirection() {
