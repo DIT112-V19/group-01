@@ -1,5 +1,6 @@
 #include <Smartcar.h>
 
+
 // Configuration of left and right odometers, from SmartCar Library example.
 DirectionlessOdometer leftOdometer(50), rightOdometer(60);
 const int LEFT_ODOMETER_PIN = 2;
@@ -26,6 +27,8 @@ const unsigned int MAX_DISTANCE = 30;
 SR04 front(TRIGGER_PIN, ECHO_PIN, MAX_DISTANCE);
 int distance;
 
+const int buttonPin = 7;
+volatile int buttonState = 0;
 // Setup code runs once
 void setup() {
   Serial.begin(9600);
@@ -38,14 +41,27 @@ void setup() {
 
 // Loop code runs repeatedly
 void loop() {
-  measureDistance();
-  setCarMoveForward();
-
+	buttonState = digitalRead(buttonPin);
+	if (buttonState == HIGH) {
+		stopCar;
+		delay(1500);
+	}
+	else {
+		measureDistance();
+		setCarMoveForward();
+	}
+  
   // && distance > 0 because of Arduino sensor bug
   if(distance < MAX_DISTANCE && distance > 0 ){
     stopCar();
     changeRandomDirection();
   };
+}
+
+void pin_ISR() {
+	buttonState = digitalRead(buttonPin);
+	stopCar;
+	
 }
 
 // Randomly chooses left or right and turn continuously until way is free
