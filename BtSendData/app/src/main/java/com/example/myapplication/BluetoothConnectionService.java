@@ -7,12 +7,14 @@ import android.bluetooth.BluetoothServerSocket;
 import android.bluetooth.BluetoothSocket;
 import android.content.Context;
 import android.util.Log;
+import android.widget.Toast;
 
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
 import java.nio.charset.Charset;
 import java.util.UUID;
+
 
 public class BluetoothConnectionService {
     private static final String TAG = "BluetoothConnectionS";
@@ -33,6 +35,11 @@ public class BluetoothConnectionService {
     private UUID deviceUUID;
     ProgressDialog mProgressDialog;
     private static ConnectedThread mConnectedThread;
+
+    //test this toast function
+    private  void toastMessage(String message){
+        Toast.makeText(mContext,message,Toast.LENGTH_SHORT).show();
+    }
 
     public BluetoothConnectionService(Context context){
         mContext = context;
@@ -73,6 +80,7 @@ public class BluetoothConnectionService {
                 Log.d(TAG, "run: RFCOM server socket start...");
                 socket = mmServerSocket.accept();
                 Log.d(TAG, "run: RFCOM server socket accepted connection.");
+                toastMessage("Connected ! ");
             } catch (IOException e){
                 Log.e(TAG, "AcceptThread: IOException: " + e.getMessage());
             }
@@ -115,6 +123,7 @@ public class BluetoothConnectionService {
                 tmp = mmDevice.createInsecureRfcommSocketToServiceRecord(deviceUUID);
             } catch (IOException e) {
                 Log.e(TAG, "ConnectThread: Could not create InsecureRfcommSocket " + e.getMessage());
+                toastMessage("couldn't connect ");
             }
 
             mmSocket = tmp;
@@ -182,6 +191,8 @@ public class BluetoothConnectionService {
         mProgressDialog = ProgressDialog.show(mContext, "Connecting Bluetooth", "Please wait...", true);
         mConnectThread = new ConnectThread(device, uuid);
         mConnectThread.start();
+        //this toast would prove connection and show which device its connected to .
+        toastMessage("successfully connected to " + device + "with UUID " + deviceUUID );
     }
 
     /**
@@ -259,6 +270,7 @@ public class BluetoothConnectionService {
      * @param out bytes to write
      * @see ConnectedThread#write(byte[])
      */
+
     public static void write(byte[] out) {
         //Create temporary object
         ConnectedThread r;
@@ -267,4 +279,5 @@ public class BluetoothConnectionService {
         Log.d(TAG, "write: Write called.");
         mConnectedThread.write(out);
     }
+
 }
