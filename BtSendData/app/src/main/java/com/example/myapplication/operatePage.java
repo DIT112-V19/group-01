@@ -37,8 +37,8 @@ public class operatePage extends AppCompatActivity {
         downward_arrow.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String w = "s";
-                byte[] bytes = w.getBytes(Charset.defaultCharset());
+                String driveBackwards = "s";
+                byte[] bytes = driveBackwards.getBytes(Charset.defaultCharset());
                 write(bytes);
             }
         });
@@ -47,8 +47,8 @@ public class operatePage extends AppCompatActivity {
         upward_arrow.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String w = "w";
-                byte[] bytes = w.getBytes(Charset.defaultCharset());
+                String driveForward = "w";
+                byte[] bytes = driveForward.getBytes(Charset.defaultCharset());
                 write(bytes);
             }
         });
@@ -58,8 +58,8 @@ public class operatePage extends AppCompatActivity {
         left_arrow.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String w = "a";
-                byte[] bytes = w.getBytes(Charset.defaultCharset());
+                String driveLeft = "a";
+                byte[] bytes = driveLeft.getBytes(Charset.defaultCharset());
                 write(bytes);
             }
         });
@@ -68,8 +68,8 @@ public class operatePage extends AppCompatActivity {
         right_arrow.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String w = "d";
-                byte[] bytes = w.getBytes(Charset.defaultCharset());
+                String driveRight = "d";
+                byte[] bytes = driveRight.getBytes(Charset.defaultCharset());
                 write(bytes);
             }
         });
@@ -77,8 +77,8 @@ public class operatePage extends AppCompatActivity {
         stopbutton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String w = "x";
-                byte[] bytes = w.getBytes(Charset.defaultCharset());
+                String stop = "x";
+                byte[] bytes = stop.getBytes(Charset.defaultCharset());
                 write(bytes);
             }
         });
