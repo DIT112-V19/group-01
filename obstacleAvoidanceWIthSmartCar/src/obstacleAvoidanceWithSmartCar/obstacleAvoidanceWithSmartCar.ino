@@ -1,5 +1,6 @@
 #include <Smartcar.h>
 
+
 // Configuration of left and right odometers, from SmartCar Library example.
 DirectionlessOdometer leftOdometer(50), rightOdometer(60);
 const int LEFT_ODOMETER_PIN = 2;
@@ -37,10 +38,12 @@ int distanceBack=0;
 
 
 
+
 // Setup code runs once
 void setup() {
-  Serial.begin(9600);
-  odometerSetUp();
+	pinMode(A4, INPUT_PULLUP);
+	Serial.begin(9600);
+	odometerSetUp();
 
   // Cruise Control controls the car speed in meters/second
   //using default PID values
@@ -49,15 +52,25 @@ void setup() {
 
 // Loop code runs repeatedly
 void loop() {
-    measureDistance();
-  setCarMoveForward();
 
+	int sensorVal = digitalRead(A4);
+	Serial.println(sensorVal);
+	if (sensorVal == HIGH) {
+		measureDistance();
+		setCarMoveForward();
+	}
+	else {
+		stopCar();
+		delay(1500);
+	}
+  
   // && distance > 0 because of Arduino sensor bug
  if(distanceFront < MAX_DISTANCE && distanceFront > 0 ){
     stopCar();
     changeRandomDirection();
   };
 }
+
 
 // Randomly chooses left or right and turn continuously until way is free
 void changeRandomDirection() {
