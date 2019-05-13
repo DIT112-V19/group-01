@@ -20,12 +20,23 @@ BrushedMotor rightMotor(12, 13, 11);
 DifferentialControl control(leftMotor, rightMotor);
 SmartCar car(control, gyroscope, leftOdometer, rightOdometer);
 
+//declaring pins for ultrasonic sensors
+const int TRIGGER_PIN_REAR = A4;
+const int ECHO_PIN_REAR = A5;
 //variables for the obstacle avoidance
 const int TRIGGER_PIN = 6; //D6
 const int ECHO_PIN = 5; //D5
+
 const unsigned int MAX_DISTANCE = 30;
+
+SR04 back (TRIGGER_PIN_REAR, ECHO_PIN_REAR, MAX_DISTANCE);
 SR04 front(TRIGGER_PIN, ECHO_PIN, MAX_DISTANCE);
-int distance;
+
+//setting variables to 0 so they'll give correct value
+int distanceFront=0;
+int distanceBack=0;
+
+
 
 
 // Setup code runs once
@@ -54,7 +65,7 @@ void loop() {
 	}
   
   // && distance > 0 because of Arduino sensor bug
-  if(distance < MAX_DISTANCE && distance > 0 ){
+ if(distanceFront < MAX_DISTANCE && distanceFront > 0 ){
     stopCar();
     changeRandomDirection();
   };
@@ -64,7 +75,7 @@ void loop() {
 // Randomly chooses left or right and turn continuously until way is free
 void changeRandomDirection() {
   float randomNumber = generateRandomNumber();
-  while (distance < MAX_DISTANCE && distance > 0 ) {
+  while (distanceFront < MAX_DISTANCE && distanceFront > 0 ) {
     if (randomNumber > 4) {
       changeDirectionRight();
     }
@@ -98,16 +109,40 @@ void changeDirectionLeft() {
 void setCarMoveForward() {
   car.overrideMotorSpeed(40, 40);
 }
+void setCarMoveForwardFast(){
+  car.overrideMotorSpeed(80,80);
+  }
 
 void stopCar(){
   car.overrideMotorSpeed(0, 0);
 }
+void measureDistanceBack(){
+  distanceBack = back.getDistance();
+  Serial.println(distanceBack);
+}
+
+void measureDistanceFront(){
+  distanceFront = front.getDistance();
+   Serial.print(distanceFront);
+}
+
+void displayDistances(){
+  
+  Serial.print("\t Front :");
+ measureDistanceFront();
+  Serial.print("\t Rear : ");
+ measureDistanceBack();
+
+
+
+}
 
 // Get sensor distance measurement, in centimetre
 void measureDistance(){
-  distance = front.getDistance();
-  Serial.println(distance);
+  distanceFront = front.getDistance();
+  
 }
+
 
 // Set up of left and right odometers. Extracted from SmartCar example
 void odometerSetUp() {
