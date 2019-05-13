@@ -63,6 +63,7 @@ public class BluetoothConnectionService {
 
                 Log.d(TAG, "AcceptThread: Setting up Server using: " + MY_UUID_INSECURE);
 
+
             } catch (IOException e){
 
             }
@@ -83,6 +84,7 @@ public class BluetoothConnectionService {
                 toastMessage("Connected ! ");
             } catch (IOException e){
                 Log.e(TAG, "AcceptThread: IOException: " + e.getMessage());
+
             }
             if(socket != null){
                 connected(socket,mmDevice);
@@ -192,7 +194,7 @@ public class BluetoothConnectionService {
         mConnectThread = new ConnectThread(device, uuid);
         mConnectThread.start();
         //this toast would prove connection and show which device its connected to .
-        toastMessage("successfully connected to " + device + "with UUID " + deviceUUID );
+        toastMessage("successfully connected to " + device  );
     }
 
     /**
