@@ -30,7 +30,7 @@ int distance;
 
 // Setup code runs once
 void setup() {
-	pinMode(4, INPUT_PULLUP);
+	pinMode(A4, INPUT_PULLUP);
 	Serial.begin(9600);
 	odometerSetUp();
 
@@ -42,7 +42,7 @@ void setup() {
 // Loop code runs repeatedly
 void loop() {
 
-	int sensorVal = digitalRead(4);
+	int sensorVal = digitalRead(A4);
 	Serial.println(sensorVal);
 	if (sensorVal == HIGH) {
 		measureDistance();
