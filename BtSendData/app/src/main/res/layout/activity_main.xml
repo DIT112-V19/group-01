@@ -2,6 +2,7 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/activity_main"
+    android:background="#2E5BCE"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:paddingLeft="16dp"
@@ -14,45 +15,67 @@
     <Button
         android:id="@+id/btnONOFF"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="40dp"
         android:layout_alignParentTop="true"
         android:layout_alignParentRight="true"
-        android:layout_marginTop="365dp"
+        android:layout_marginTop="390dp"
         android:layout_marginRight="116dp"
-        android:text="ON/OFF" />
+        android:text="ON/OFF"
+        android:textSize="16sp"
+        android:textColor="#FFFFFF"
+        android:background="@drawable/custom_button2"
+        android:textAllCaps="false"
+        />
 
     <Button
         android:id="@+id/btnDiscoverable_on_off"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="180dp"
+        android:layout_height="40dp"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
+        android:layout_marginTop="20dp"
         android:onClick="btnEnableDisable_Discoverable"
         android:text="Enable Discoverable"
+        android:textSize="16sp"
+        android:textColor="#FFFFFF"
+        android:background="@drawable/custom_button2"
+        android:textAllCaps="false"
         />
 
     <Button
         android:id="@+id/btnFindUnpairedDevices"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="40dp"
         android:onClick="btnDiscover"
         android:text="Discover"
+        android:layout_marginTop="20dp"
+        android:textSize="16sp"
+        android:textColor="#FFFFFF"
+        android:background="@drawable/custom_button2"
+        android:textAllCaps="false"
         />
 
 
     <ListView
         android:id="@+id/lvNewDevices"
         android:layout_width="354dp"
-        android:layout_height="218dp"
-        android:layout_below="@+id/btnFindUnpairedDevices" />
+        android:layout_height="170dp"
+        android:layout_below="@+id/btnFindUnpairedDevices"
+        android:layout_marginTop="47dp" />
 
     <Button
         android:id="@+id/btnStartConnection"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/btnFindUnpairedDevices"
-        android:layout_marginTop="312dp"
-        android:text="Start Connection" />
+        android:layout_width="160dp"
+        android:layout_height="40dp"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="390dp"
+        android:text="Start Connection"
+        android:textSize="16sp"
+        android:textColor="#FFFFFF"
+        android:background="@drawable/custom_button2"
+        android:textAllCaps="false"
+
+        />
 
     <EditText
         android:id="@+id/editText"
@@ -67,19 +90,30 @@
     <Button
         android:id="@+id/btnSend"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="40dp"
         android:layout_below="@id/lvNewDevices"
         android:layout_marginLeft="19dp"
-        android:layout_marginTop="24dp"
+        android:layout_marginTop="29dp"
         android:layout_toRightOf="@+id/editText"
-        android:text="Send" />
+        android:text="Send"
+        android:textSize="16sp"
+        android:textColor="#FFFFFF"
+        android:background="@drawable/custom_button2"
+        android:textAllCaps="false"
+        />
 
     <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
         android:id="@+id/Continue"
+        android:layout_width="160dp"
+        android:layout_height="40dp"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="390dp"
+        android:layout_marginLeft="273dp"
+        android:background="@drawable/custom_button2"
         android:text="Continue"
-        android:layout_marginTop="420dp"/>
+        android:textAllCaps="false"
+        android:textColor="#FFFFFF"
+        android:textSize="16sp" />
 
 
 
