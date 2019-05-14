@@ -4,59 +4,64 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#2E5BCE"
     tools:context=".operatePage">
 
 
 
     <ImageButton
         android:id="@+id/arrows_UP"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="290dp"
+        android:layout_marginTop="250dp"
         android:padding="5dp"
+        android:background="@drawable/custom_button3"
         android:src="@drawable/upward_arrow"
         />
 
     <ImageButton
         android:id="@+id/arrows_DOWN"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="350dp"
-
+        android:layout_marginTop="500dp"
+        android:background="@drawable/custom_button3"
         android:padding="5dp"
         android:src="@drawable/downward_arrow"
         />
 
     <ImageButton
         android:id="@+id/arrows_LEFT"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="450dp"
-        android:padding="5dp"
-        android:src="@drawable/arrows_left"
-        />
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_centerVertical="true"
+        android:layout_marginLeft="60dp"
+        android:background="@drawable/custom_button3"
+
+        android:src="@drawable/arrows_left" />
 
     <ImageButton
         android:id="@+id/arrows_RIGHT"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="500dp"
-        android:padding="5dp"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_centerVertical="true"
+        android:layout_marginLeft="300dp"
+
+        android:background="@drawable/custom_button3"
         android:src="@drawable/arrow_right"
         />
 
 
     <ImageButton
         android:id="@+id/stopButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
         android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
         android:layout_marginTop="100dp"
         android:padding="10dp"
+        android:background="@drawable/custom_button3"
         android:src="@drawable/stopbutton"
         />
 
