@@ -19,41 +19,30 @@ public class optionsPage extends AppCompatActivity {
     public Button play;
 
 
+    public static final String TAG = "optionsPage";
 
-public static final String TAG = "optionsPage";
-
-    public void initialize(){
+    public void initialize() {
         play = (Button) findViewById(R.id.play);
         alarm = (Button) findViewById(R.id.alarm);
 
 
         play.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v)  {
+            public void onClick(View v) {
+                String playOperateManually = "z";
+                byte[] bytes = playOperateManually.getBytes(Charset.defaultCharset());
+                write(bytes);
 
-                try {
-                    String playOperateManually = "o";
-                    byte[] bytes = playOperateManually.getBytes(Charset.defaultCharset());
-                    write(bytes);
-                    Log.d(TAG, "char o sent to arduino mega");
-                    Intent intent = new Intent(optionsPage.this,operatePage.class);
-                    startActivity(intent);
-
-                }
-                catch (Exception e) {
-                    Toast.makeText(optionsPage.this, "not connected", Toast.LENGTH_SHORT).show();
-                    e.getMessage();
-
-                }
-
-
+                Log.d(TAG, "char z sent to arduino mega");
+                Intent intent = new Intent(optionsPage.this, operatePage.class);
+                startActivity(intent);
             }
         });
         alarm.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
-                Intent intent = new Intent(optionsPage.this,alarmPage.class);
+                Intent intent = new Intent(optionsPage.this, alarmPage.class);
                 startActivity(intent);
             }
         });

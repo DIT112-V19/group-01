@@ -36,7 +36,6 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
     Button Continue;
 
 
-
     private static final UUID MY_UUID_INSECURE =
             //UUID.fromString("075efdf0-199f-43ac-b643-90cb838b2e49");
             UUID.fromString("00001101-0000-1000-8000-00805F9B34FB");
@@ -48,7 +47,6 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
     public DeviceListAdapter mDeviceListAdapter;
 
     ListView lvNewDevices;
-
 
 
     // Create a BroadcastReceiver for ACTION_FOUND
@@ -198,12 +196,11 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
         lvNewDevices.setOnItemClickListener(MainActivity.this);
 
 
-
         // This button takes us to the optionsPage
         Continue.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(MainActivity.this,optionsPage.class);
+                Intent intent = new Intent(MainActivity.this, optionsPage.class);
                 startActivity(intent);
             }
         });
@@ -326,6 +323,8 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
     @Override
     public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
         //first cancel discovery because its very memory intensive.
+
+
         mBluetoothAdapter.cancelDiscovery();
 
         Log.d(TAG, "onItemClick: You Clicked on a device.");

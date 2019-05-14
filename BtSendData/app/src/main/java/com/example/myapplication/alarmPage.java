@@ -12,18 +12,18 @@ import java.nio.charset.Charset;
 import static com.example.myapplication.BluetoothConnectionService.write;
 
 public class alarmPage extends AppCompatActivity {
-    
+
     private Button btnActivate;
 
     private final static String TAG = "";
-    
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_alarm_page);
-        
-        btnActivate = (Button)findViewById(R.id.activateButton);
-        
+
+        btnActivate = (Button) findViewById(R.id.activateButton);
+
         btnActivate.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -31,12 +31,12 @@ public class alarmPage extends AppCompatActivity {
                 String activateMode = "f";
                 byte[] bytes = activateMode.getBytes(Charset.defaultCharset());
                 write(bytes);
-                Log.d(TAG,"Button f pressed");
+                Log.d(TAG, "Button f pressed");
             }
         });
     }
-    
-    private void toastMessage (String message){
+
+    private void toastMessage(String message) {
         Toast.makeText(this, message, Toast.LENGTH_SHORT).show();
 
 
