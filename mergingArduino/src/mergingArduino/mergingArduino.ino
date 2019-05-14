@@ -19,19 +19,25 @@ BrushedMotor rightMotor(12, 13, 11);
 // applying different speed on each side, like a tank.
 DifferentialControl control(leftMotor, rightMotor);
 SmartCar car(control, gyroscope, leftOdometer, rightOdometer);
+
 //declaring button pin
-int sensorVal = digitalRead(A4);
+//int sensorVal = 0;
+bool buttonIsPressed = false;
+bool exitManualControl = false;
+
+
 //declaring pins for ultrasonic sensors
-const int TRIGGER_PIN_REAR = A4;
-const int ECHO_PIN_REAR = A5;
-//variables for the obstacle avoidance
-const int TRIGGER_PIN = 6; //D6
-const int ECHO_PIN = 5; //D5
+//const int TRIGGER_PIN_REAR_SENSOR = A4;
+const int ECHO_PIN_REAR_SENSOR = A5;
+
+//variables for the front sensor
+const int TRIGGER_PIN_FRONT_SENSOR = 6; //D6
+const int ECHO_PIN_FRONT_SENSOR = 5; //D5
 
 const unsigned int MAX_DISTANCE = 30;
 
-SR04 back (TRIGGER_PIN_REAR, ECHO_PIN_REAR, MAX_DISTANCE);
-SR04 front(TRIGGER_PIN, ECHO_PIN, MAX_DISTANCE);
+//SR04 back (TRIGGER_PIN_REAR_SENSOR, ECHO_PIN_REAR_SENSOR, MAX_DISTANCE);
+SR04 front(TRIGGER_PIN_FRONT_SENSOR, ECHO_PIN_FRONT_SENSOR, MAX_DISTANCE);
 
 //setting variables to 0 so they'll give correct value
 int distanceFront = 0;
@@ -50,24 +56,32 @@ void setup() {
 	Serial.begin(9600);
 	odometerSetUp();
 
-  // Cruise Control controls the car speed in meters/second
-  //using default PID values
-  // car.enableCruiseControl();
+	// Cruise Control controls the car speed in meters/second
+	//using default PID values
+	// car.enableCruiseControl();
 }
 
 // Loop code runs repeatedly
 void loop() {
-option = Serial.read();
-switch (option)
-{
-	case 'f':
-	automaticObstacleAvoidance();
-	break;
 
-	case 'o':
-	carManualControl();
-	break;
-}
+	option = Serial.read();
+	switch (option)
+	{
+		case 'f':
+		buttonIsPressed = false;
+		while (buttonIsPressed == false) {
+			automaticObstacleAvoidance();
+			checkIfButtonIsPressed();
+		}
+		break;
+
+		case 'z':
+		exitManualControl = false;
+		while (exitManualControl == false ){
+			carManualControl();
+		}
+		break;
+	}
 }
 
 void automaticObstacleAvoidance(){
@@ -81,88 +95,94 @@ void automaticObstacleAvoidance(){
 	}
 }
 
-void carManualControl(){
-	trigger = Serial.read();
-  Serial.println(trigger);
-  switch (trigger)
-  {
-    case 'w':
-    setCarMoveForward();
-    break;
-
-    case 's':
-    setCarMoveBackwards();
-    break;
-
-    case 'a':
-    changeDirectionLeft();
-		setCarMoveForward();
-    break;
-
-    case 'd':
-    changeDirectionRight();
-		setCarMoveForward();
-    break;
-
-    case 'x':
-    stopCar();
-    break;
-  }
-}
-
-//method for pressing the button
-void pressButton(){
+void checkIfButtonIsPressed(){
+	int sensorVal = digitalRead(A4);
 	Serial.println(sensorVal);
+
 	if (sensorVal == HIGH) {
 		measureDistance();
 		setCarMoveForward();
 	}
 	else {
+		buttonIsPressed = true;
 		stopCar();
-		delay(1500);
+	}
+}
+
+void carManualControl(){
+	trigger = Serial.read();
+	Serial.println(trigger);
+	switch (trigger)
+	{
+		case 'w':
+		setCarMoveForward();
+		break;
+
+		case 's':
+		setCarMoveBackwards();
+		break;
+
+		case 'a':
+		changeDirectionLeft();
+		setCarMoveForward();
+		break;
+
+		case 'd':
+		changeDirectionRight();
+		setCarMoveForward();
+		break;
+
+		case 'x':
+		stopCar();
+		break;
+
+		case 'v' :
+		exitManualControl = true;
+		stopCar();
+		break;
 	}
 }
 
 // Randomly chooses left or right and turn continuously until way is free
 void changeRandomDirection() {
-  float randomNumber = generateRandomNumber();
-  while (distanceFront < MAX_DISTANCE && distanceFront > 0 ) {
-    if (randomNumber > 4) {
-      changeDirectionRight();
-    }
-    else {
-      changeDirectionLeft();
-    };
-    measureDistance();
-  }
+	float randomNumber = generateRandomNumber();
+	while (distanceFront < MAX_DISTANCE && distanceFront > 0 ) {
+		if (randomNumber > 4) {
+			changeDirectionRight();
+		}
+		else {
+			changeDirectionLeft();
+		};
+		measureDistance();
+	}
 }
 
 long generateRandomNumber() {
-  return random(0, 10);
+	return random(0, 10);
 }
 
 void changeDirectionRight() {
-  //Arguments(leftMotor speed capacity, rightMotor speed capacity)
-  car.overrideMotorSpeed(50, -50);
-  //delay so the car has enough time to turn
-  delay(150);
-  stopCar();
+	//Arguments(leftMotor speed capacity, rightMotor speed capacity)
+	car.overrideMotorSpeed(50, -50);
+	//delay so the car has enough time to turn
+	delay(150);
+	stopCar();
 }
 
 void changeDirectionLeft() {
-  //Arguments(leftMotor speed capacity, rightMotor speed capacity)
-  car.overrideMotorSpeed(-50, 50);
-  //delay so the car has enough time to turn
-  delay(150);
-  stopCar();
+	//Arguments(leftMotor speed capacity, rightMotor speed capacity)
+	car.overrideMotorSpeed(-50, 50);
+	//delay so the car has enough time to turn
+	delay(150);
+	stopCar();
 }
 
 void setCarMoveForward() {
-  car.overrideMotorSpeed(40, 40);
+	car.overrideMotorSpeed(40, 40);
 }
 
 void setCarMoveForwardFast(){
-  car.overrideMotorSpeed(80, 80);
+	car.overrideMotorSpeed(80, 80);
 }
 
 void setCarMoveBackwards(){
@@ -170,49 +190,49 @@ void setCarMoveBackwards(){
 }
 
 void stopCar(){
-  car.overrideMotorSpeed(0, 0);
+	car.overrideMotorSpeed(0, 0);
 }
-void measureDistanceBack(){
-  distanceBack = back.getDistance();
-  Serial.println(distanceBack);
-}
+//void measureDistanceBack(){
+//distanceBack = back.getDistance();
+//Serial.println(distanceBack);
+//}
 
 void measureDistanceFront(){
-  distanceFront = front.getDistance();
-   Serial.print(distanceFront);
+	distanceFront = front.getDistance();
+	Serial.print(distanceFront);
 }
 
 void displayDistances(){
 
-  Serial.print("\t Front :");
- measureDistanceFront();
-  Serial.print("\t Rear : ");
- measureDistanceBack();
+	Serial.print("\t Front :");
+	measureDistanceFront();
+	Serial.print("\t Rear : ");
+	// measureDistanceBack();
 }
 
 // Get sensor distance measurement, in centimetre
 void measureDistance(){
-  distanceFront = front.getDistance();
+	distanceFront = front.getDistance();
 }
 
 // Set up of left and right odometers. Extracted from SmartCar example
 void odometerSetUp() {
-  leftOdometer.attach(LEFT_ODOMETER_PIN, []() {
-    leftOdometer.update();
-  });
-  rightOdometer.attach(RIGHT_ODOMETER_PIN, []() {
-    rightOdometer.update();
-  });
+	leftOdometer.attach(LEFT_ODOMETER_PIN, []() {
+		leftOdometer.update();
+	});
+	rightOdometer.attach(RIGHT_ODOMETER_PIN, []() {
+		rightOdometer.update();
+	});
 }
 
 void odometerPrintDistance() {
-  // Serial.print(leftOdometer.getDistance());
-  Serial.print("\t\t");
-  Serial.println(rightOdometer.getDistance());
+	// Serial.print(leftOdometer.getDistance());
+	Serial.print("\t\t");
+	Serial.println(rightOdometer.getDistance());
 }
 
 void gyroscopePrintAngle() {
-  // Update the readings of the gyroscope
-  gyroscope.update();
-  Serial.println(gyroscope.getHeading());
+	// Update the readings of the gyroscope
+	gyroscope.update();
+	Serial.println(gyroscope.getHeading());
 }

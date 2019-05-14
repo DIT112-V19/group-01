@@ -1,5 +1,7 @@
 package com.example.myapplication;
 
+import android.content.Intent;
+import android.media.Image;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -19,6 +21,7 @@ public class operatePage extends AppCompatActivity {
     ImageButton right_arrow;
     ImageButton stopbutton;
     MainActivity mBluetoothConnection = new MainActivity();
+    ImageButton returnButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,6 +35,21 @@ public class operatePage extends AppCompatActivity {
         left_arrow = (ImageButton) findViewById(R.id.arrows_LEFT);
         right_arrow = (ImageButton) findViewById(R.id.arrows_RIGHT);
         stopbutton = (ImageButton) findViewById(R.id.stopButton);
+        returnButton = (ImageButton) findViewById(R.id.return_button);
+
+
+        returnButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent (operatePage.this,optionsPage.class);
+                startActivity(intent);
+
+                String exitManualControl = "v";
+                byte[] bytes = exitManualControl.getBytes(Charset.defaultCharset());
+                write(bytes);
+
+            }
+        });
 
 
         downward_arrow.setOnClickListener(new View.OnClickListener() {
