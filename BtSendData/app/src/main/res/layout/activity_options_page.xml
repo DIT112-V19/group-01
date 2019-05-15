@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#2E5BCE"
     tools:context=".optionsPage">
 
     <Button
@@ -13,6 +14,10 @@
         android:text="@string/play_button"
        android:layout_marginTop="400dp"
        android:layout_centerHorizontal="true"
+        android:textSize="20sp"
+        android:textColor="#FFFFFF"
+        android:background="@drawable/custom_button2"
+        android:textAllCaps="false"
         />
 
     <Button
@@ -21,7 +26,13 @@
         android:layout_height="wrap_content"
 android:layout_centerHorizontal="true"
         android:layout_marginTop="300dp"
-        android:text="@string/alarm" />
+
+        android:text="Alarm"
+        android:textSize="20sp"
+        android:textColor="#FFFFFF"
+        android:background="@drawable/custom_button2"
+        android:textAllCaps="false"
+        />
     <ImageButton
         android:id="@+id/return_button"
         android:layout_width="wrap_content"
@@ -29,6 +40,7 @@ android:layout_centerHorizontal="true"
         android:layout_marginTop="15dp"
         android:layout_marginLeft="15dp"
         android:src="@drawable/returnbutton"/>
+
 
 
 
