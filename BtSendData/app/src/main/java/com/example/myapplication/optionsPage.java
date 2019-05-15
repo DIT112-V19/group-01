@@ -40,11 +40,16 @@ public class optionsPage extends AppCompatActivity {
         play.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String playOperateManually = "z";
-                byte[] bytes = playOperateManually.getBytes(Charset.defaultCharset());
-                write(bytes);
+                try {
+                    String playOperateManually = "z";
+                    byte[] bytes = playOperateManually.getBytes(Charset.defaultCharset());
+                    write(bytes);
+                    Log.d(TAG, "char z sent to arduino mega");
+                }catch(Exception e ){
+                    Toast.makeText(optionsPage.this, "Unable to connect device", Toast.LENGTH_SHORT).show();
+                }
 
-                Log.d(TAG, "char z sent to arduino mega");
+
                 Intent intent = new Intent(optionsPage.this, operatePage.class);
                 startActivity(intent);
             }
