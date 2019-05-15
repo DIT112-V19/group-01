@@ -32,9 +32,7 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
     Button btnStartConnection;
     Button btnSend;
     EditText etSend;
-
     Button Continue;
-
 
 
     private static final UUID MY_UUID_INSECURE =
@@ -48,7 +46,6 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
     public DeviceListAdapter mDeviceListAdapter;
 
     ListView lvNewDevices;
-
 
 
     // Create a BroadcastReceiver for ACTION_FOUND
@@ -198,12 +195,11 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
         lvNewDevices.setOnItemClickListener(MainActivity.this);
 
 
-
         // This button takes us to the optionsPage
         Continue.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(MainActivity.this,optionsPage.class);
+                Intent intent = new Intent(MainActivity.this, optionsPage.class);
                 startActivity(intent);
             }
         });
@@ -238,7 +234,7 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
 
     //chat service method
     public void startBTConnection(BluetoothDevice device, UUID uuid) {
-        Log.d(TAG, "startBTConnection: Initializing RFCOM BLuetooth Connection.");
+        Log.d(TAG, "startBTConnection: Initializing RFCOM Bluetooth Connection.");
         mBluetoothConnection.startClient(device, uuid);
     }
 
@@ -326,6 +322,8 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
     @Override
     public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
         //first cancel discovery because its very memory intensive.
+
+
         mBluetoothAdapter.cancelDiscovery();
 
         Log.d(TAG, "onItemClick: You Clicked on a device.");
@@ -336,7 +334,7 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
         Log.d(TAG, "onItemClick: deviceAddress = " + deviceAddress);
 
         //create the bond.
-        //NOTE: Requires API 17+? I think this is JellyBean
+
         if (Build.VERSION.SDK_INT > Build.VERSION_CODES.JELLY_BEAN_MR2) {
             Log.d(TAG, "Trying to pair with " + deviceName);
             mBTDevices.get(i).createBond();

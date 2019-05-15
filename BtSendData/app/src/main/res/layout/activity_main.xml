@@ -77,6 +77,8 @@
 
         />
 
+
+    //only for testing purposes
     <EditText
         android:id="@+id/editText"
         android:layout_width="289dp"
@@ -89,6 +91,7 @@
         android:hint="    Enter text here" />
 
 
+    //only for testing purposes
     <Button
         android:id="@+id/btnSend"
         android:layout_width="wrap_content"

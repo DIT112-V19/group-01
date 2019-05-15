@@ -26,12 +26,23 @@
         android:layout_height="wrap_content"
 android:layout_centerHorizontal="true"
         android:layout_marginTop="300dp"
+
         android:text="Alarm"
         android:textSize="20sp"
         android:textColor="#FFFFFF"
         android:background="@drawable/custom_button2"
         android:textAllCaps="false"
         />
+
+    <ImageButton
+        android:id="@+id/return_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:layout_marginLeft="15dp"
+        android:src="@drawable/returnbutton"/>
+
+
 
 
 </RelativeLayout>
