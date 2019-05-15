@@ -26,23 +26,6 @@
         android:layout_marginTop="350dp"
         android:text="set alarm " />
 
-    <TextClock
-        android:id="@+id/textClock"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignTop="@+id/timePicker"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginStart="106dp"
-        android:layout_marginTop="401dp"
-        android:layout_marginEnd="105dp"
-
-        android:layout_marginBottom="230dp"
-        android:textAlignment="center"
-        android:textStyle="bold"
-        android:visibility="visible" />
 
     <Button
         android:id="@+id/activateButton"
