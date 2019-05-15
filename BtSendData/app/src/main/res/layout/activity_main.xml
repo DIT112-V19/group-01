@@ -81,13 +81,15 @@
     //only for testing purposes
     <EditText
         android:id="@+id/editText"
-        android:layout_width="250dp"
-        android:layout_height="wrap_content"
+        android:layout_width="289dp"
+        android:layout_height="40dp"
         android:layout_below="@+id/lvNewDevices"
         android:layout_alignParentStart="true"
-        android:layout_marginStart="20dp"
+        android:layout_marginStart="17dp"
         android:layout_marginTop="29dp"
-        android:hint="Enter text here" />
+        android:background="@drawable/custom_edittext"
+        android:hint="    Enter text here" />
+
 
     //only for testing purposes
     <Button
