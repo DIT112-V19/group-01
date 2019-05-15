@@ -17,9 +17,9 @@ import java.util.UUID;
 
 
 public class BluetoothConnectionService {
-    private static final String TAG = "BluetoothConnectionS";
+    private static final String TAG = "BluetoothConnections";
 
-    private static final String appName = "BLuetoothApp";
+    private static final String appName = "BluetoothApp";
     //UUID = an address, used to identify information
     private static final UUID MY_UUID_INSECURE =
             //UUID.fromString("075efdf0-199f-43ac-b643-90cb838b2e49");
@@ -81,7 +81,7 @@ public class BluetoothConnectionService {
                 Log.d(TAG, "run: RFCOM server socket start...");
                 socket = mmServerSocket.accept();
                 Log.d(TAG, "run: RFCOM server socket accepted connection.");
-                toastMessage("Connected ! ");
+                toastMessage("Connected !  " + mmDevice.getName());
             } catch (IOException e){
                 Log.e(TAG, "AcceptThread: IOException: " + e.getMessage());
 
