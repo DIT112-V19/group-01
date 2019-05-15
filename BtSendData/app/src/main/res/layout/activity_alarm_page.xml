@@ -16,6 +16,7 @@
         android:layout_centerVertical="true"
         android:text="set alarm " />
 
+    <!-->We should set the size to wrap_content and not a fixed number , it could affect the layout depending on what device being used. <-->
     <Button
         android:id="@+id/activateButton"
         android:layout_width="wrap_content"

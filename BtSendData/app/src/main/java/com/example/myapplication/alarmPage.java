@@ -36,6 +36,7 @@ public class alarmPage extends AppCompatActivity {
             }
         });
 
+        //try catch to make sure that the app doesn't crash
         btnActivate.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
