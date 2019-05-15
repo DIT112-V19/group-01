@@ -40,11 +40,11 @@ public class alarmPage extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 try{
-                toastMessage("activated");
                 String activateMode = "f";
                 byte[] bytes = activateMode.getBytes(Charset.defaultCharset());
                 write(bytes);
-                Log.d(TAG, "Button f pressed");}
+                Log.d(TAG, "Button f pressed");
+                   }
                 catch (Exception e){
                     toastMessage("Reconnect bluetooth");
                 }
