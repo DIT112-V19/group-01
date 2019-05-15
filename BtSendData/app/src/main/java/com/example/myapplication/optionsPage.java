@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.Toast;
 
 import java.io.IOException;
@@ -15,8 +16,9 @@ import static com.example.myapplication.BluetoothConnectionService.write;
 
 public class optionsPage extends AppCompatActivity {
 
-    public Button alarm;
-    public Button play;
+    private Button alarm;
+    private Button play;
+    private ImageButton returnButton;
 
 
     public static final String TAG = "optionsPage";
@@ -24,6 +26,15 @@ public class optionsPage extends AppCompatActivity {
     public void initialize() {
         play = (Button) findViewById(R.id.play);
         alarm = (Button) findViewById(R.id.alarm);
+        returnButton = (ImageButton) findViewById(R.id.return_button);
+
+        returnButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(optionsPage.this,MainActivity.class);
+                startActivity(intent);
+            }
+        });
 
 
         play.setOnClickListener(new View.OnClickListener() {

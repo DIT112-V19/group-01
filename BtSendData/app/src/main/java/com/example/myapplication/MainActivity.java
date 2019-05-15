@@ -32,7 +32,6 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
     Button btnStartConnection;
     Button btnSend;
     EditText etSend;
-
     Button Continue;
 
 
@@ -235,7 +234,7 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
 
     //chat service method
     public void startBTConnection(BluetoothDevice device, UUID uuid) {
-        Log.d(TAG, "startBTConnection: Initializing RFCOM BLuetooth Connection.");
+        Log.d(TAG, "startBTConnection: Initializing RFCOM Bluetooth Connection.");
         mBluetoothConnection.startClient(device, uuid);
     }
 
@@ -335,7 +334,7 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
         Log.d(TAG, "onItemClick: deviceAddress = " + deviceAddress);
 
         //create the bond.
-        //NOTE: Requires API 17+? I think this is JellyBean
+
         if (Build.VERSION.SDK_INT > Build.VERSION_CODES.JELLY_BEAN_MR2) {
             Log.d(TAG, "Trying to pair with " + deviceName);
             mBTDevices.get(i).createBond();
