@@ -45,14 +45,19 @@ public class alarmPage extends AppCompatActivity {
             }
         });
 
+        //try catch to make sure that the app doesn't crash
         btnActivate.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                toastMessage("activated");
+                try{
                 String activateMode = "f";
                 byte[] bytes = activateMode.getBytes(Charset.defaultCharset());
                 write(bytes);
                 Log.d(TAG, "Button f pressed");
+                   }
+                catch (Exception e){
+                    toastMessage("Reconnect bluetooth");
+                }
             }
         });
 

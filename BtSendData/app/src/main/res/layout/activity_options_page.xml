@@ -11,7 +11,7 @@
         android:id="@+id/play"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="play"
+        android:text="@string/play_button"
        android:layout_marginTop="400dp"
        android:layout_centerHorizontal="true"
         android:textSize="20sp"
@@ -33,7 +33,6 @@ android:layout_centerHorizontal="true"
         android:background="@drawable/custom_button2"
         android:textAllCaps="false"
         />
-
     <ImageButton
         android:id="@+id/return_button"
         android:layout_width="wrap_content"

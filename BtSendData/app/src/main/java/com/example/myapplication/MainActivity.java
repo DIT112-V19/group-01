@@ -30,8 +30,8 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
     Button btnEnableDisable_Discoverable;
     BluetoothConnectionService mBluetoothConnection;
     Button btnStartConnection;
-    Button btnSend;
-    EditText etSend;
+   // Button btnSend;
+    //EditText etSend;
     Button Continue;
 
 
@@ -183,8 +183,9 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
         mBTDevices = new ArrayList<>();
         Continue = (Button) findViewById(R.id.Continue);
         btnStartConnection = (Button) findViewById(R.id.btnStartConnection);
-        btnSend = (Button) findViewById(R.id.btnSend);
-        etSend = (EditText) findViewById(R.id.editText);
+        //used for testing
+//        btnSend = (Button) findViewById(R.id.btnSend);
+//        etSend = (EditText) findViewById(R.id.editText);
 
         //Broadcasts when bond state changes (ie:pairing)
         IntentFilter filter = new IntentFilter(BluetoothDevice.ACTION_BOND_STATE_CHANGED);
@@ -219,13 +220,14 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
             }
         });
 
-        btnSend.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                byte[] bytes = etSend.getText().toString().getBytes(Charset.defaultCharset());
-                mBluetoothConnection.write(bytes);
-            }
-        });
+        //testing purposes
+//        btnSend.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                byte[] bytes = etSend.getText().toString().getBytes(Charset.defaultCharset());
+//                mBluetoothConnection.write(bytes);
+//            }
+//        });
     }
 
     public void startConnection() {
