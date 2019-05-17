@@ -22,7 +22,9 @@ public class alarmPage extends AppCompatActivity {
 
     private Button btnActivate;
     private ImageButton returnButton;
+    private Button setAlarmButton;
     private TimePicker alarmTime;
+    boolean alarmHasBeenSet = false;
 
     SimpleDateFormat simpleDateFormat;
     Calendar calender;
@@ -36,12 +38,20 @@ public class alarmPage extends AppCompatActivity {
 
         btnActivate = (Button) findViewById(R.id.activateButton);
         returnButton = (ImageButton) findViewById(R.id.return_button);
+        setAlarmButton = (Button) findViewById(R.id.set_Alarm_button);
 
         returnButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(alarmPage.this, optionsPage.class);
                 startActivity(intent);
+            }
+        });
+
+        setAlarmButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                alarmHasBeenSet = true;
             }
         });
 
@@ -75,7 +85,7 @@ public class alarmPage extends AppCompatActivity {
 
                 //this method compares if the current time is the same like the time set on the time picker, implementation of the button "set alarm" would be possible by
                 //the use of a boolean
-                if (simpleDateFormat.format(calender.getTime()).equals(AlarmTime())) {
+                if (alarmHasBeenSet && simpleDateFormat.format(calender.getTime()).equals(AlarmTime())) {
                     //toastMessage("activated");
                     String activateMode = "f";
                     byte[] bytes = activateMode.getBytes(Charset.defaultCharset());
