@@ -29,9 +29,6 @@
 
 
     <Button
-
-   
-
         android:id="@+id/activateButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -56,6 +53,7 @@
         android:src="@drawable/returnbutton"/>
 
     <Button
+        android:id="@+id/set_Alarm_button"
         android:layout_width="200dp"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
