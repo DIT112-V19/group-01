@@ -93,6 +93,7 @@ public class alarmPage extends AppCompatActivity {
 
         String stringAlarmTime;
         String stringAlarmMinutes;
+        String stringAlarmHours;
 
         if(alarmMinutes < 10) {
             stringAlarmMinutes = "0";
@@ -101,7 +102,14 @@ public class alarmPage extends AppCompatActivity {
             stringAlarmMinutes = Integer.toString(alarmMinutes);
         }
 
-        stringAlarmTime = Integer.toString(alarmHours).concat(":").concat(stringAlarmMinutes);
+        if(alarmHours < 10) {
+            stringAlarmHours = "0";
+            stringAlarmHours = stringAlarmHours.concat(Integer.toString(alarmHours));
+        } else {
+            stringAlarmHours = Integer.toString(alarmHours);
+        }
+
+        stringAlarmTime = stringAlarmHours.concat(":").concat(stringAlarmMinutes);
 
         return stringAlarmTime;
     }
