@@ -45,6 +45,14 @@ public class alarmPage extends AppCompatActivity {
             public void onClick(View v) {
                 Intent intent = new Intent(alarmPage.this, optionsPage.class);
                 startActivity(intent);
+
+                try {
+                    String exitManualControl = "v";
+                    byte[] bytes = exitManualControl.getBytes(Charset.defaultCharset());
+                    write(bytes);
+                } catch (Exception e) {
+                    Log.d(TAG, "Not connected by bluetooth");
+                }
             }
         });
 
