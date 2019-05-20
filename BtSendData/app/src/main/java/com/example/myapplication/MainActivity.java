@@ -34,7 +34,7 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
     //EditText etSend;
     Button Continue;
 
-
+    /* Universally unique identifier used to configure and establish bluetooth connection*/
     private static final UUID MY_UUID_INSECURE =
             //UUID.fromString("075efdf0-199f-43ac-b643-90cb838b2e49");
             UUID.fromString("00001101-0000-1000-8000-00805F9B34FB");
@@ -177,15 +177,17 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        Button btnONOFF = (Button) findViewById(R.id.btnONOFF);
-        btnEnableDisable_Discoverable = (Button) findViewById(R.id.btnDiscoverable_on_off);
-        lvNewDevices = (ListView) findViewById(R.id.lvNewDevices);
+        Button btnONOFF =  findViewById(R.id.btnONOFF);
+        btnEnableDisable_Discoverable = findViewById(R.id.btnDiscoverable_on_off);
+        lvNewDevices =  findViewById(R.id.lvNewDevices);
         mBTDevices = new ArrayList<>();
-        Continue = (Button) findViewById(R.id.Continue);
-        btnStartConnection = (Button) findViewById(R.id.btnStartConnection);
-        //used for testing
-//        btnSend = (Button) findViewById(R.id.btnSend);
-//        etSend = (EditText) findViewById(R.id.editText);
+        Continue = findViewById(R.id.Continue);
+        btnStartConnection =  findViewById(R.id.btnStartConnection);
+
+        /** used for testing
+        * btnSend = (Button) findViewById(R.id.btnSend);
+        * etSend = (EditText) findViewById(R.id.editText);
+        */
 
         //Broadcasts when bond state changes (ie:pairing)
         IntentFilter filter = new IntentFilter(BluetoothDevice.ACTION_BOND_STATE_CHANGED);
@@ -220,14 +222,15 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
             }
         });
 
-        //testing purposes
-//        btnSend.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                byte[] bytes = etSend.getText().toString().getBytes(Charset.defaultCharset());
-//                mBluetoothConnection.write(bytes);
-//            }
-//        });
+        /**testing purposes
+        * btnSend.setOnClickListener(new View.OnClickListener() {
+        *    @Override
+        *    public void onClick(View view) {
+        *        byte[] bytes = etSend.getText().toString().getBytes(Charset.defaultCharset());
+        *        mBluetoothConnection.write(bytes);
+        *    }
+        * });
+         */
     }
 
     public void startConnection() {

@@ -30,12 +30,12 @@ public class operatePage extends AppCompatActivity {
         setContentView(R.layout.activity_operate_page);
 
 
-        upward_arrow = (ImageButton) findViewById(R.id.arrows_UP);
-        downward_arrow = (ImageButton) findViewById(R.id.arrows_DOWN);
-        left_arrow = (ImageButton) findViewById(R.id.arrows_LEFT);
-        right_arrow = (ImageButton) findViewById(R.id.arrows_RIGHT);
-        stopbutton = (ImageButton) findViewById(R.id.stopButton);
-        returnButton = (ImageButton) findViewById(R.id.return_button);
+        upward_arrow = findViewById(R.id.arrows_UP);
+        downward_arrow = findViewById(R.id.arrows_DOWN);
+        left_arrow = findViewById(R.id.arrows_LEFT);
+        right_arrow = findViewById(R.id.arrows_RIGHT);
+        stopbutton = findViewById(R.id.stopButton);
+        returnButton = findViewById(R.id.return_button);
 
 
         //setting try catch statements in each function so the app doesnt crash when button if disconnected

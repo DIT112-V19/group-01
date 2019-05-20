@@ -13,7 +13,7 @@ public class WelcomePage extends AppCompatActivity {
 Button connect;
 
 public void initialize (){
-    connect = (Button) findViewById(R.id.connectButton);
+    connect = findViewById(R.id.connectButton);
 
     connect.setOnClickListener(new View.OnClickListener() {
         @Override

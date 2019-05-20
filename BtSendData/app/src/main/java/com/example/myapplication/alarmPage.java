@@ -37,9 +37,9 @@ public class alarmPage extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_alarm_page);
 
-        btnActivate = (Button) findViewById(R.id.activateButton);
-        returnButton = (ImageButton) findViewById(R.id.return_button);
-        setAlarmButton = (Button) findViewById(R.id.set_Alarm_button);
+        btnActivate = findViewById(R.id.activateButton);
+        returnButton =  findViewById(R.id.return_button);
+        setAlarmButton =  findViewById(R.id.set_Alarm_button);
 
         returnButton.setOnClickListener(new View.OnClickListener() {
             @Override
