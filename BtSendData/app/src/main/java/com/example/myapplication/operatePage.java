@@ -24,6 +24,9 @@ public class operatePage extends AppCompatActivity {
     private ImageButton stopbutton;
     private ImageButton returnButton;
 
+    public ImageButton getDownwardArrow(){
+        return downward_arrow ;
+    }
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -36,6 +39,7 @@ public class operatePage extends AppCompatActivity {
         right_arrow = findViewById(R.id.arrows_RIGHT);
         stopbutton = findViewById(R.id.stopButton);
         returnButton = findViewById(R.id.return_button);
+
 
 
         //setting try catch statements in each function so the app doesnt crash when button if disconnected
@@ -57,13 +61,19 @@ public class operatePage extends AppCompatActivity {
         });
 
 
+
         downward_arrow.setOnClickListener(new View.OnClickListener() {
+
+
             @Override
             public void onClick(View v) {
+
                 try {
-                    String driveBackwards = "s";
-                    byte[] bytes = driveBackwards.getBytes(Charset.defaultCharset());
-                    write(bytes);
+                    while(downward_arrow.isPressed()) {
+                        String driveBackwards = "s";
+                        byte[] bytes = driveBackwards.getBytes(Charset.defaultCharset());
+                        write(bytes);
+                    }
                 } catch (Exception e) {
                     toastMessage("Reconnect bluetooth");
                 }
@@ -75,9 +85,10 @@ public class operatePage extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 try {
+                    while(upward_arrow.isPressed()){
                     String driveForward = "w";
                     byte[] bytes = driveForward.getBytes(Charset.defaultCharset());
-                    write(bytes);
+                    write(bytes);}
                 } catch (Exception e) {
                     toastMessage("Reconnect bluetooth");
                 }
@@ -90,9 +101,10 @@ public class operatePage extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 try {
+                    while(left_arrow.isPressed()){
                     String driveLeft = "a";
                     byte[] bytes = driveLeft.getBytes(Charset.defaultCharset());
-                    write(bytes);
+                    write(bytes);}
                 } catch (Exception e) {
                     toastMessage("Reconnect bluetooth");
                 }
@@ -104,9 +116,10 @@ public class operatePage extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 try {
+                    while(right_arrow.isPressed()){
                     String driveRight = "d";
                     byte[] bytes = driveRight.getBytes(Charset.defaultCharset());
-                    write(bytes);
+                    write(bytes);}
                 } catch (Exception e) {
                     toastMessage("Reconnect bluetooth");
                 }
