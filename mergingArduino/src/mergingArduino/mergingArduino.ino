@@ -1,17 +1,15 @@
 #include <Smartcar.h>
 #include <SoftwareSerial.h>
 
-// Configuration of left and right odometers, from SmartCar Library example.
+// Configuration of odometers, gyroscope, motors and diferential control,
+// all from SmartCar Library examples.
 DirectionlessOdometer leftOdometer(50), rightOdometer(60);
 const int LEFT_ODOMETER_PIN = 2;
 const int RIGHT_ODOMETER_PIN = 3;
 
-// Config of gyroscopePrintAngle
-//GYROSCOPE_OFFSET is set to 9 because of calibration purposes
 const int GYROSCOPE_OFFSET = 9;
 GY50 gyroscope(GYROSCOPE_OFFSET);
 
-// Control configuration
 BrushedMotor leftMotor(8, 10, 9);
 BrushedMotor rightMotor(12, 13, 11);
 
