@@ -77,10 +77,14 @@ public class alarmPage extends AppCompatActivity {
                 //the use of a boolean
                 if (simpleDateFormat.format(calender.getTime()).equals(AlarmTime())) {
                     //toastMessage("activated");
-                    String activateMode = "f";
-                    byte[] bytes = activateMode.getBytes(Charset.defaultCharset());
-                    write(bytes);
-                    Log.d(TAG, "Button f pressed");
+                    try {
+                        String activateMode = "f";
+                        byte[] bytes = activateMode.getBytes(Charset.defaultCharset());
+                        write(bytes);
+                        Log.d(TAG, "Button f pressed");
+                    }catch (Exception e){
+                       Log.d(TAG,"Bluetooth not connected");
+                    }
                 }
             }
             //delay = when does it start comparing, period = how often does it compare, 1000 ms = 1 sec

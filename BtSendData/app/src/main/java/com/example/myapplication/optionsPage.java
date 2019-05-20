@@ -19,8 +19,6 @@ public class optionsPage extends AppCompatActivity {
     private Button alarm;
     private Button play;
     private ImageButton returnButton;
-
-
     public static final String TAG = "optionsPage";
 
     public void initialize() {
@@ -58,8 +56,13 @@ public class optionsPage extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                Intent intent = new Intent(optionsPage.this, alarmPage.class);
-                startActivity(intent);
+                try {
+                    Intent intent = new Intent(optionsPage.this, alarmPage.class);
+                    startActivity(intent);
+                }catch (Exception e ){
+                    e.getMessage();
+                }
+
             }
         });
     }
