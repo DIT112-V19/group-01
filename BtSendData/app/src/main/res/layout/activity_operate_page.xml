@@ -4,8 +4,9 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#2E5BCE"
+    android:background="@drawable/background"
     tools:context=".operatePage">
+
 
 
     <ImageButton
@@ -22,7 +23,8 @@
         android:layout_width="50dp"
         android:layout_height="50dp"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="250dp"
+       android:layout_above="@id/stopButton"
+        android:layout_marginBottom="50dp"
         android:padding="5dp"
         android:background="@drawable/custom_button3"
         android:src="@drawable/upward_arrow"
@@ -33,7 +35,8 @@
         android:layout_width="50dp"
         android:layout_height="50dp"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="500dp"
+       android:layout_below="@+id/stopButton"
+        android:layout_marginTop="50dp"
         android:background="@drawable/custom_button3"
         android:padding="5dp"
         android:src="@drawable/downward_arrow"
@@ -43,8 +46,10 @@
         android:id="@+id/arrows_LEFT"
         android:layout_width="50dp"
         android:layout_height="50dp"
+       android:layout_toLeftOf="@+id/stopButton"
+        android:layout_marginRight="50dp"
+        android:layout_centerHorizontal="true"
         android:layout_centerVertical="true"
-        android:layout_marginLeft="60dp"
         android:background="@drawable/custom_button3"
 
         android:src="@drawable/arrows_left" />
@@ -53,9 +58,10 @@
         android:id="@+id/arrows_RIGHT"
         android:layout_width="50dp"
         android:layout_height="50dp"
+        android:layout_centerHorizontal="true"
         android:layout_centerVertical="true"
-        android:layout_marginLeft="300dp"
-
+        android:layout_marginLeft="50dp"
+        android:layout_toRightOf="@+id/stopButton"
         android:background="@drawable/custom_button3"
         android:src="@drawable/arrow_right"
         />
@@ -67,7 +73,6 @@
         android:layout_height="50dp"
         android:layout_centerHorizontal="true"
         android:layout_centerVertical="true"
-        android:layout_marginTop="100dp"
         android:padding="10dp"
         android:background="@drawable/custom_button3"
         android:src="@drawable/stopbutton"
