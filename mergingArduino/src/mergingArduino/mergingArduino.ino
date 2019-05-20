@@ -92,7 +92,9 @@ void automaticObstacleAvoidance(){
 	}
 }
 
+
 void checkIfStopCarButtonIsPressed(){
+
 	int sensorVal = digitalRead(4);
 	Serial.println(sensorVal);
 
