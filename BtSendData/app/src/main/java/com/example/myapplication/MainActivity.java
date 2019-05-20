@@ -177,12 +177,12 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        Button btnONOFF = (Button) findViewById(R.id.btnONOFF);
-        btnEnableDisable_Discoverable = (Button) findViewById(R.id.btnDiscoverable_on_off);
-        lvNewDevices = (ListView) findViewById(R.id.lvNewDevices);
+        Button btnONOFF =  findViewById(R.id.btnONOFF);
+        btnEnableDisable_Discoverable = findViewById(R.id.btnDiscoverable_on_off);
+        lvNewDevices =  findViewById(R.id.lvNewDevices);
         mBTDevices = new ArrayList<>();
-        Continue = (Button) findViewById(R.id.Continue);
-        btnStartConnection = (Button) findViewById(R.id.btnStartConnection);
+        Continue = findViewById(R.id.Continue);
+        btnStartConnection =  findViewById(R.id.btnStartConnection);
 
         /** used for testing
         * btnSend = (Button) findViewById(R.id.btnSend);
