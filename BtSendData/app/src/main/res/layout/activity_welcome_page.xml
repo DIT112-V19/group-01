@@ -33,11 +33,15 @@
         android:id="@+id/clover"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="272dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="264dp"
+        android:layout_marginBottom="8dp"
         android:elevation="6dp"
         android:src="@drawable/clover"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.015" />
 
 
     <LinearLayout
@@ -69,18 +73,20 @@
 
 
     //if we set android:background="@drawable/background" what is the difference of using this ? looks like a lot of code :)
-    <ImageView
-        android:id="@+id/bgapp"
-        android:layout_width="526dp"
-        android:layout_height="900dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginStart="8dp"
-        android:scaleType="fitXY"
-        android:src="@drawable/bgapp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.923"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+
+    <!--<ImageView-->
+        <!--android:id="@+id/bgapp"-->
+        <!--android:layout_width="526dp"-->
+        <!--android:layout_height="900dp"-->
+        <!--android:layout_marginStart="8dp"-->
+        <!--android:layout_marginTop="16dp"-->
+        <!--android:layout_marginEnd="8dp"-->
+        <!--android:scaleType="fitXY"-->
+        <!--android:src="@drawable/bgapp"-->
+        <!--app:layout_constraintEnd_toEndOf="parent"-->
+        <!--app:layout_constraintHorizontal_bias="0.755"-->
+        <!--app:layout_constraintStart_toStartOf="parent"-->
+        <!--app:layout_constraintTop_toTopOf="parent" />-->
 
 
 

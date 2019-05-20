@@ -7,6 +7,7 @@ import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
+import android.graphics.Color;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -30,8 +31,7 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
     Button btnEnableDisable_Discoverable;
     BluetoothConnectionService mBluetoothConnection;
     Button btnStartConnection;
-   // Button btnSend;
-    //EditText etSend;
+
     Button Continue;
 
     /* Universally unique identifier used to configure and establish bluetooth connection*/
@@ -183,6 +183,7 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
         mBTDevices = new ArrayList<>();
         Continue = findViewById(R.id.Continue);
         btnStartConnection =  findViewById(R.id.btnStartConnection);
+
 
         /** used for testing
         * btnSend = (Button) findViewById(R.id.btnSend);
