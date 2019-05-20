@@ -39,9 +39,8 @@ SR04 front(TRIGGER_PIN_FRONT_SENSOR, ECHO_PIN_FRONT_SENSOR, MAX_DISTANCE);
 int distanceFront = 0;
 int distanceBack = 0;
 
-//the trigger for car manouver
-char option;
-char trigger;
+char switchStatementVarMainLoop;
+char switchStatementVarManualControl;
 
 //bluetooth configuration ??
 SoftwareSerial BTSerial(0,1);
@@ -50,6 +49,8 @@ SoftwareSerial BTSerial(0,1);
 void setup() {
 	pinMode(A4, INPUT_PULLUP);
 	Serial.begin(9600);
+
+	//Let's try to run the car without the odometerSetUp
 	odometerSetUp();
 
 	// Cruise Control controls the car speed in meters/second
@@ -59,8 +60,8 @@ void setup() {
 
 // Loop code runs repeatedly
 void loop() {
-	option = Serial.read();
-	switch (option)
+	switchStatementVarMainLoop = Serial.read();
+	switch (switchStatementVarMainLoop)
 	{
 		case 'f':
 			alarmFunction();
@@ -85,6 +86,10 @@ void automaticObstacleAvoidance(){
 	measureDistance();
 	setCarMoveForward();
 	checkIfStopCarButtonIsPressed();
+
+	// we have to add && buttonIsPressed == false to the if statement so the carManualControl
+	// so that the button stops the car even when it's turning around
+	
 	// && distance > 0 because of Arduino sensor bug
 	if(distanceFront < MAX_DISTANCE && distanceFront > 0 ){
 		stopCar();
@@ -117,9 +122,9 @@ void manualControlFunction() {
 }
 
 void carManualControl(){
-	trigger = Serial.read();
-	Serial.println(trigger);
-	switch (trigger)
+	switchStatementVarManualControl = Serial.read();
+	Serial.println(switchStatementVarManualControl);
+	switch (switchStatementVarManualControl)
 	{
 		case 'w':
 		setCarMoveForward();
@@ -224,7 +229,7 @@ void measureDistance(){
 	distanceFront = front.getDistance();
 }
 
-// Set up of left and right odometers. Extracted from SmartCar example
+// ------------ Code necessary for initialization of Smartcar ------------
 void odometerSetUp() {
 	leftOdometer.attach(LEFT_ODOMETER_PIN, []() {
 		leftOdometer.update();
