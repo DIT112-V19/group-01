@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/background"
     tools:context=".WelcomePage">
 
 
@@ -67,6 +68,7 @@
 
 
 
+    //if we set android:background="@drawable/background" what is the difference of using this ? looks like a lot of code :)
     <ImageView
         android:id="@+id/bgapp"
         android:layout_width="526dp"
