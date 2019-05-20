@@ -95,12 +95,12 @@ public class alarmPage extends AppCompatActivity {
                 //this method compares if the current time is the same like the time set on the time picker, implementation of the button "set alarm" would be possible by
                 //the use of a boolean
                 if (alarmHasBeenSet && simpleDateFormat.format(calender.getTime()).equals(AlarmTime()) && !alarmPlayed) {
-                    //toastMessage("activated");
-                    String activateMode = "f";
-                    byte[] bytes = activateMode.getBytes(Charset.defaultCharset());
-                    write(bytes);
-                    Log.d(TAG, "Button f pressed");
-                    alarmPlayed = true;
+
+                        String activateMode = "f";
+                        byte[] bytes = activateMode.getBytes(Charset.defaultCharset());
+                        write(bytes);
+                        Log.d(TAG, "Button f pressed");
+                        alarmPlayed = true;
                 }
             }
             //delay = when does it start comparing, period = how often does it compare, 1000 ms = 1 sec

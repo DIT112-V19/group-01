@@ -17,6 +17,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import java.nio.charset.Charset;
 import java.util.ArrayList;
@@ -30,9 +31,8 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
     Button btnEnableDisable_Discoverable;
     BluetoothConnectionService mBluetoothConnection;
     Button btnStartConnection;
-   // Button btnSend;
-    //EditText etSend;
     Button Continue;
+
 
     /* Universally unique identifier used to configure and establish bluetooth connection*/
     private static final UUID MY_UUID_INSECURE =
@@ -123,12 +123,14 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
             final String action = intent.getAction();
             Log.d(TAG, "onReceive: ACTION FOUND.");
 
-            if (action.equals(BluetoothDevice.ACTION_FOUND)) {
+            if (action.equals(BluetoothDevice.ACTION_FOUND) ) {
                 BluetoothDevice device = intent.getParcelableExtra(BluetoothDevice.EXTRA_DEVICE);
-                mBTDevices.add(device);
-                Log.d(TAG, "onReceive: " + device.getName() + ": " + device.getAddress());
-                mDeviceListAdapter = new DeviceListAdapter(context, R.layout.device_adapter_view, mBTDevices);
-                lvNewDevices.setAdapter(mDeviceListAdapter);
+
+                    mBTDevices.add(device);
+                    Log.d(TAG, "onReceive: " + device.getName() + ": " + device.getAddress());
+                    mDeviceListAdapter = new DeviceListAdapter(context, R.layout.device_adapter_view, mBTDevices);
+                    lvNewDevices.setAdapter(mDeviceListAdapter);
+
             }
         }
     };
@@ -219,6 +221,8 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
             @Override
             public void onClick(View view) {
                 startConnection();
+
+               // Toast.makeText(MainActivity.this, "Connected to " + mBTDevice.getName(), Toast.LENGTH_SHORT).show();
             }
         });
 
