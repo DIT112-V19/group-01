@@ -45,7 +45,7 @@ SoftwareSerial BTSerial(0,1);
 
 // Setup code runs once
 void setup() {
-	pinMode(A4, INPUT_PULLUP);
+	pinMode(4, INPUT_PULLUP);
 	Serial.begin(9600);
 	odometerSetUp();
 
@@ -93,7 +93,7 @@ void automaticObstacleAvoidance(){
 }
 
 void checkIfStopCarButtonIsPressed(){
-	int sensorVal = digitalRead(A4);
+	int sensorVal = digitalRead(4);
 	Serial.println(sensorVal);
 
 	if (sensorVal == HIGH) {
