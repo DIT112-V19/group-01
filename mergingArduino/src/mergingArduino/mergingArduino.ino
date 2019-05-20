@@ -49,8 +49,6 @@ SoftwareSerial BTSerial(0,1);
 void setup() {
 	pinMode(A4, INPUT_PULLUP);
 	Serial.begin(9600);
-
-	//Let's try to run the car without the odometerSetUp
 	odometerSetUp();
 
 	// Cruise Control controls the car speed in meters/second
@@ -87,11 +85,9 @@ void automaticObstacleAvoidance(){
 	setCarMoveForward();
 	checkIfStopCarButtonIsPressed();
 
-	// we have to add && buttonIsPressed == false to the if statement so the carManualControl
-	// so that the button stops the car even when it's turning around
-	
 	// && distance > 0 because of Arduino sensor bug
-	if(distanceFront < MAX_DISTANCE && distanceFront > 0 ){
+	if(distanceFront < MAX_DISTANCE && distanceFront > 0
+		&& buttonIsPressed == false){
 		stopCar();
 		changeRandomDirection();
 		checkIfStopCarButtonIsPressed();
