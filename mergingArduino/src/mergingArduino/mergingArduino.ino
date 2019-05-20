@@ -25,15 +25,11 @@ SmartCar car(control, gyroscope, leftOdometer, rightOdometer);
 bool buttonIsPressed = false;
 bool exitManualControl = false;
 
-
-//declaring pins for ultrasonic sensors
-//const int TRIGGER_PIN_REAR_SENSOR = A4;
-const int ECHO_PIN_REAR_SENSOR = A5;
-
-//variables for the front sensor
+//variables for the front and back sensors
 const int TRIGGER_PIN_FRONT_SENSOR = 6; //D6
 const int ECHO_PIN_FRONT_SENSOR = 5; //D5
-
+// const int TRIGGER_PIN_REAR_SENSOR = A4;
+// const int ECHO_PIN_REAR_SENSOR = A5;
 const unsigned int MAX_DISTANCE = 30;
 
 //SR04 back (TRIGGER_PIN_REAR_SENSOR, ECHO_PIN_REAR_SENSOR, MAX_DISTANCE);
@@ -44,8 +40,8 @@ int distanceFront = 0;
 int distanceBack = 0;
 
 //the trigger for car manouver
-char trigger;
 char option;
+char trigger;
 
 //bluetooth configuration ??
 SoftwareSerial BTSerial(0,1);
@@ -63,39 +59,41 @@ void setup() {
 
 // Loop code runs repeatedly
 void loop() {
-
 	option = Serial.read();
 	switch (option)
 	{
 		case 'f':
-		buttonIsPressed = false;
-		while (buttonIsPressed == false) {
-			automaticObstacleAvoidance();
-			checkIfButtonIsPressed();
-		}
+			alarmFunction();
 		break;
 
 		case 'z':
-		exitManualControl = false;
-		while (exitManualControl == false ){
-			carManualControl();
-		}
+			manualControlFunction();
 		break;
+	}
+}
+
+// --------------------Code for alarmFunction() is bellow --------------------
+
+void alarmFunction(){
+	buttonIsPressed = false;
+	while (buttonIsPressed == false) {
+		automaticObstacleAvoidance();
 	}
 }
 
 void automaticObstacleAvoidance(){
 	measureDistance();
 	setCarMoveForward();
-
+	checkIfStopCarButtonIsPressed();
 	// && distance > 0 because of Arduino sensor bug
 	if(distanceFront < MAX_DISTANCE && distanceFront > 0 ){
 		stopCar();
 		changeRandomDirection();
+		checkIfStopCarButtonIsPressed();
 	}
 }
 
-void checkIfButtonIsPressed(){
+void checkIfStopCarButtonIsPressed(){
 	int sensorVal = digitalRead(A4);
 	Serial.println(sensorVal);
 
@@ -106,6 +104,15 @@ void checkIfButtonIsPressed(){
 	else {
 		buttonIsPressed = true;
 		stopCar();
+	}
+}
+
+// ---------------- Code for manualControlFunction() is bellow ----------------
+
+void manualControlFunction() {
+	exitManualControl = false;
+	while (exitManualControl == false ){
+		carManualControl();
 	}
 }
 
@@ -143,9 +150,16 @@ void carManualControl(){
 	}
 }
 
+// ------------ Code common for alarm and manual control modes ------------
+
+long generateRandomNumber() {
+	return random(0, 10);
+}
+
 // Randomly chooses left or right and turn continuously until way is free
 void changeRandomDirection() {
 	float randomNumber = generateRandomNumber();
+
 	while (distanceFront < MAX_DISTANCE && distanceFront > 0 ) {
 		if (randomNumber > 4) {
 			changeDirectionRight();
@@ -155,10 +169,6 @@ void changeRandomDirection() {
 		};
 		measureDistance();
 	}
-}
-
-long generateRandomNumber() {
-	return random(0, 10);
 }
 
 void changeDirectionRight() {
@@ -203,7 +213,6 @@ void measureDistanceFront(){
 }
 
 void displayDistances(){
-
 	Serial.print("\t Front :");
 	measureDistanceFront();
 	Serial.print("\t Rear : ");
