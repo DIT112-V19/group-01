@@ -24,9 +24,9 @@ public class optionsPage extends AppCompatActivity {
     public static final String TAG = "optionsPage";
 
     public void initialize() {
-        play = (Button) findViewById(R.id.play);
-        alarm = (Button) findViewById(R.id.alarm);
-        returnButton = (ImageButton) findViewById(R.id.return_button);
+        play = findViewById(R.id.play);
+        alarm = findViewById(R.id.alarm);
+        returnButton = findViewById(R.id.return_button);
 
         returnButton.setOnClickListener(new View.OnClickListener() {
             @Override

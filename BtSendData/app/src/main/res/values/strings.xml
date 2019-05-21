@@ -5,7 +5,7 @@
     <string name="activate">Activate</string>
     <string name="set_alarm">Set Alarm</string>
     <string name="on_off">On/Off</string>
-    <string name="enable_discoverable">Enable Discoverable</string>
+    <string name="enable_discoverable">Enable </string>
     <string name="discover"> Discover</string>
     <string name="start_connection"> Start Connection</string>
     <string name="Continue"> Continue</string>

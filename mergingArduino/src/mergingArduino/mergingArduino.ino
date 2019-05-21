@@ -1,17 +1,15 @@
 #include <Smartcar.h>
 #include <SoftwareSerial.h>
 
-// Configuration of left and right odometers, from SmartCar Library example.
+// Configuration of odometers, gyroscope, motors and diferential control,
+// all from SmartCar Library examples.
 DirectionlessOdometer leftOdometer(50), rightOdometer(60);
 const int LEFT_ODOMETER_PIN = 2;
 const int RIGHT_ODOMETER_PIN = 3;
 
-// Config of gyroscopePrintAngle
-//GYROSCOPE_OFFSET is set to 9 because of calibration purposes
 const int GYROSCOPE_OFFSET = 9;
 GY50 gyroscope(GYROSCOPE_OFFSET);
 
-// Control configuration
 BrushedMotor leftMotor(8, 10, 9);
 BrushedMotor rightMotor(12, 13, 11);
 
@@ -25,15 +23,11 @@ SmartCar car(control, gyroscope, leftOdometer, rightOdometer);
 bool buttonIsPressed = false;
 bool exitManualControl = false;
 
-
-//declaring pins for ultrasonic sensors
-//const int TRIGGER_PIN_REAR_SENSOR = A4;
-const int ECHO_PIN_REAR_SENSOR = A5;
-
-//variables for the front sensor
+//variables for the front and back sensors
 const int TRIGGER_PIN_FRONT_SENSOR = 6; //D6
 const int ECHO_PIN_FRONT_SENSOR = 5; //D5
-
+// const int TRIGGER_PIN_REAR_SENSOR = A4;
+// const int ECHO_PIN_REAR_SENSOR = A5;
 const unsigned int MAX_DISTANCE = 30;
 
 //SR04 back (TRIGGER_PIN_REAR_SENSOR, ECHO_PIN_REAR_SENSOR, MAX_DISTANCE);
@@ -43,9 +37,8 @@ SR04 front(TRIGGER_PIN_FRONT_SENSOR, ECHO_PIN_FRONT_SENSOR, MAX_DISTANCE);
 int distanceFront = 0;
 int distanceBack = 0;
 
-//the trigger for car manouver
-char trigger;
-char option;
+char switchStatementVarMainLoop;
+char switchStatementVarManualControl;
 
 //bluetooth configuration ??
 SoftwareSerial BTSerial(0,1);
@@ -69,9 +62,8 @@ void setup() {
 
 // Loop code runs repeatedly
 void loop() {
-
-	option = Serial.read();
-	switch (option)
+	switchStatementVarMainLoop = Serial.read();
+	switch (switchStatementVarMainLoop)
 	{
 		case 'f':
 		buttonIsPressed = false;
@@ -80,29 +72,43 @@ void loop() {
 			automaticObstacleAvoidance();
 			checkIfButtonIsPressed();
 		}
+
+			//alarmFunction();
+
 		break;
 
 		case 'z':
-		exitManualControl = false;
-		while (exitManualControl == false ){
-			carManualControl();
-		}
+			manualControlFunction();
 		break;
+	}
+}
+
+// --------------------Code for alarmFunction() is bellow --------------------
+
+void alarmFunction(){
+	buttonIsPressed = false;
+	while (buttonIsPressed == false) {
+		automaticObstacleAvoidance();
 	}
 }
 
 void automaticObstacleAvoidance(){
 	measureDistance();
 	setCarMoveForward();
+	checkIfStopCarButtonIsPressed();
 
 	// && distance > 0 because of Arduino sensor bug
-	if(distanceFront < MAX_DISTANCE && distanceFront > 0 ){
+	if(distanceFront < MAX_DISTANCE && distanceFront > 0
+		&& buttonIsPressed == false){
 		stopCar();
 		changeRandomDirection();
+		checkIfStopCarButtonIsPressed();
 	}
 }
 
-void checkIfButtonIsPressed(){
+
+void checkIfStopCarButtonIsPressed(){
+
 	int sensorVal = digitalRead(4);
 	Serial.println(sensorVal);
 
@@ -116,10 +122,19 @@ void checkIfButtonIsPressed(){
 	}
 }
 
+// ---------------- Code for manualControlFunction() is bellow ----------------
+
+void manualControlFunction() {
+	exitManualControl = false;
+	while (exitManualControl == false ){
+		carManualControl();
+	}
+}
+
 void carManualControl(){
-	trigger = Serial.read();
-	Serial.println(trigger);
-	switch (trigger)
+	switchStatementVarManualControl = Serial.read();
+	Serial.println(switchStatementVarManualControl);
+	switch (switchStatementVarManualControl)
 	{
 		case 'w':
 		setCarMoveForward();
@@ -150,9 +165,16 @@ void carManualControl(){
 	}
 }
 
+// ------------ Code common for alarm and manual control modes ------------
+
+long generateRandomNumber() {
+	return random(0, 10);
+}
+
 // Randomly chooses left or right and turn continuously until way is free
 void changeRandomDirection() {
 	float randomNumber = generateRandomNumber();
+
 	while (distanceFront < MAX_DISTANCE && distanceFront > 0 ) {
 		if (randomNumber > 4) {
 			changeDirectionRight();
@@ -162,10 +184,6 @@ void changeRandomDirection() {
 		};
 		measureDistance();
 	}
-}
-
-long generateRandomNumber() {
-	return random(0, 10);
 }
 
 void changeDirectionRight() {
@@ -210,7 +228,6 @@ void measureDistanceFront(){
 }
 
 void displayDistances(){
-
 	Serial.print("\t Front :");
 	measureDistanceFront();
 	Serial.print("\t Rear : ");
@@ -222,7 +239,7 @@ void measureDistance(){
 	distanceFront = front.getDistance();
 }
 
-// Set up of left and right odometers. Extracted from SmartCar example
+// ------------ Code necessary for initialization of Smartcar ------------
 void odometerSetUp() {
 	leftOdometer.attach(LEFT_ODOMETER_PIN, []() {
 		leftOdometer.update();

@@ -2,7 +2,7 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/activity_main"
-    android:background="#2E5BCE"
+
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:paddingLeft="16dp"
@@ -10,6 +10,8 @@
     android:paddingRight="16dp"
     android:paddingBottom="16dp"
     tools:context=".MainActivity"
+    android:background="@drawable/background"
+
     >
 
     <Button
@@ -18,8 +20,8 @@
         android:layout_height="wrap_content"
         android:layout_marginLeft="15dp"
         android:text="@string/on_off"
-        android:layout_below="@+id/lvNewDevices"
-      android:layout_toRightOf="@+id/btnStartConnection"
+      android:layout_toRightOf="@+id/btnDiscoverable_on_off"
+        android:layout_marginRight="30dp"
         android:layout_marginTop="15dp"
         android:textSize="16sp"
         android:textColor="#FFFFFF"
@@ -43,7 +45,7 @@
 
     <Button
         android:id="@+id/btnFindUnpairedDevices"
-        android:layout_width="wrap_content"
+        android:layout_width="130dp"
         android:layout_height="wrap_content"
         android:onClick="btnDiscover"
         android:text="@string/discover"
@@ -58,13 +60,14 @@
     <ListView
         android:id="@+id/lvNewDevices"
         android:layout_width="354dp"
-        android:layout_height="170dp"
+        android:layout_height="250dp"
         android:layout_below="@+id/btnFindUnpairedDevices"
-        android:layout_marginTop="47dp" />
+        android:layout_marginTop="47dp"
+        android:background="@color/white"/>
 
     <Button
         android:id="@+id/btnStartConnection"
-        android:layout_width="wrap_content"
+        android:layout_width="130dp"
         android:layout_height="wrap_content"
         android:layout_below="@+id/lvNewDevices"
         android:layout_marginTop="15dp"
@@ -78,43 +81,14 @@
 
 
 
-    //only for testing purposes
-    <EditText
-        android:id="@+id/editText"
-        android:layout_width="289dp"
-        android:layout_height="40dp"
-        android:layout_below="@+id/lvNewDevices"
-        android:layout_alignParentStart="true"
-        android:layout_marginStart="17dp"
-        android:layout_marginTop="29dp"
-        android:background="@drawable/custom_edittext"
-        android:hint="    Enter text here" />
-
-    <!--//only for testing purposes-->
-    <!--<Button-->
-        <!--android:id="@+id/btnSend"-->
-        <!--android:layout_width="wrap_content"-->
-        <!--android:layout_height="40dp"-->
-        <!--android:layout_below="@id/lvNewDevices"-->
-        <!--android:layout_marginLeft="19dp"-->
-        <!--android:layout_marginTop="29dp"-->
-        <!--android:layout_toRightOf="@+id/editText"-->
-        <!--android:text="Send"-->
-        <!--android:textSize="16sp"-->
-        <!--android:textColor="#FFFFFF"-->
-        <!--android:background="@drawable/custom_button2"-->
-        <!--android:textAllCaps="false"-->
-        <!--/>-->
-
     <Button
         android:id="@+id/Continue"
-        android:layout_width="wrap_content"
+        android:layout_width="200dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="15dp"
-        android:layout_marginLeft="15dp"
-        android:layout_toRightOf="@+id/btnONOFF"
         android:layout_below="@+id/lvNewDevices"
-        android:background="@drawable/custom_button2"
+        android:layout_centerHorizontal="true"
+       android:layout_marginTop="100dp"
+        android:background="@drawable/custom_button"
         android:text="@string/Continue"
         android:textAllCaps="false"
         android:textColor="#FFFFFF"

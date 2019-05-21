@@ -20,9 +20,7 @@ public class BluetoothConnectionService {
     private static final String TAG = "BluetoothConnections";
 
     private static final String appName = "BluetoothApp";
-    //UUID = an address, used to identify information
     private static final UUID MY_UUID_INSECURE =
-            //UUID.fromString("075efdf0-199f-43ac-b643-90cb838b2e49");
             UUID.fromString("00001101-0000-1000-8000-00805F9B34FB");
 
     private final BluetoothAdapter mBluetoothAdapter;
@@ -65,7 +63,7 @@ public class BluetoothConnectionService {
 
 
             } catch (IOException e){
-
+                System.out.println(e.getCause());
             }
             mmServerSocket = tmp;
         }
@@ -84,7 +82,6 @@ public class BluetoothConnectionService {
                 toastMessage("Connected !  " + mmDevice.getName());
             } catch (IOException e){
                 Log.e(TAG, "AcceptThread: IOException: " + e.getMessage());
-
             }
             if(socket != null){
                 connected(socket,mmDevice);
@@ -189,7 +186,6 @@ public class BluetoothConnectionService {
      */
     public void startClient(BluetoothDevice device, UUID uuid){
         Log.d(TAG, "startClient: Started. ");
-
         mProgressDialog = ProgressDialog.show(mContext, "Connecting Bluetooth", "Please wait...", true);
         mConnectThread = new ConnectThread(device, uuid);
         mConnectThread.start();
@@ -243,7 +239,7 @@ public class BluetoothConnectionService {
        //Call this method from the main activity to send data
         public void write(byte[] bytes){
            String text = new String(bytes, Charset.defaultCharset());
-           Log.d(TAG, "write: Writing to outputstrean: " + text);
+           Log.d(TAG, "write: Writing to outputstream: " + text);
             try {
                 mmOutStream.write(bytes);
             } catch (IOException e) {
