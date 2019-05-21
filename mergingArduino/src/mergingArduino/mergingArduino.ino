@@ -76,9 +76,6 @@ void loop() {
     while (buttonIsPressed == false) {
       automaticObstacleAvoidance();
       checkIfButtonIsPressed();
-      for(int i = 0; i < 80; i++ ){
-        digitalWrite(buzzer, HIGH);
-      }
     }
     break;
 
@@ -107,11 +104,15 @@ void checkIfButtonIsPressed(){
   Serial.println(sensorVal);
 
   if (sensorVal == HIGH) {
+    for(int i = 0; i < 80; i++ ){
+      digitalWrite(buzzer, HIGH);
+    }
     measureDistance();
     setCarMoveForward();
   }
   else {
     buttonIsPressed = true;
+    digitalWrite(buzzer, LOW);
     stopCar();
   }
 }
