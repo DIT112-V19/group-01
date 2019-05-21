@@ -67,13 +67,7 @@ void loop() {
 	{
 		case 'f':
 		buttonIsPressed = false;
-		while (buttonIsPressed == false) {
-			tone(buzzer, 4000);
-			automaticObstacleAvoidance();
-			checkIfButtonIsPressed();
-		}
-
-			//alarmFunction();
+		alarmFunction();
 
 		break;
 
