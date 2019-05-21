@@ -239,7 +239,7 @@ public class BluetoothConnectionService {
        //Call this method from the main activity to send data
         public void write(byte[] bytes){
            String text = new String(bytes, Charset.defaultCharset());
-           Log.d(TAG, "write: Writing to outputstrean: " + text);
+           Log.d(TAG, "write: Writing to outputstream: " + text);
             try {
                 mmOutStream.write(bytes);
             } catch (IOException e) {
