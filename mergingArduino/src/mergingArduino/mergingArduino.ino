@@ -50,12 +50,16 @@ char option;
 //bluetooth configuration ??
 SoftwareSerial BTSerial(0,1);
 
+//buzzer pin
+int buzzer = A3;
+
 // Setup code runs once
 void setup() {
   pinMode(4, INPUT_PULLUP);
   Serial.begin(9600);
   odometerSetUp();
 
+  pinMode(buzzer, OUTPUT);
   // Cruise Control controls the car speed in meters/second
   //using default PID values
   // car.enableCruiseControl();
@@ -100,11 +104,15 @@ void checkIfButtonIsPressed(){
   Serial.println(sensorVal);
 
   if (sensorVal == HIGH) {
+    for(int i = 0; i < 80; i++ ){
+      digitalWrite(buzzer, HIGH);
+    }
     measureDistance();
     setCarMoveForward();
   }
   else {
     buttonIsPressed = true;
+    digitalWrite(buzzer, LOW);
     stopCar();
   }
 }
