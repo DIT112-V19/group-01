@@ -43,11 +43,17 @@ char switchStatementVarManualControl;
 //bluetooth configuration ??
 SoftwareSerial BTSerial(0,1);
 
+//buzzer reference
+const int buzzer = A3;
+
 // Setup code runs once
 void setup() {
 	pinMode(4, INPUT_PULLUP);
 	Serial.begin(9600);
 	odometerSetUp();
+
+	//buzzer setup
+	pinMode (buzzer, OUTPUT);
 
 	// Cruise Control controls the car speed in meters/second
 	//using default PID values
@@ -60,7 +66,15 @@ void loop() {
 	switch (switchStatementVarMainLoop)
 	{
 		case 'f':
-			alarmFunction();
+		buttonIsPressed = false;
+		while (buttonIsPressed == false) {
+			tone(buzzer, 4000);
+			automaticObstacleAvoidance();
+			checkIfButtonIsPressed();
+		}
+
+			//alarmFunction();
+
 		break;
 
 		case 'z':
