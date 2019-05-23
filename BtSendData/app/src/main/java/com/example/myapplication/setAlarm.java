@@ -18,7 +18,7 @@ import java.util.TimerTask;
 
 import static com.example.myapplication.BluetoothConnectionService.write;
 
-public class alarmPage extends AppCompatActivity {
+public class setAlarm extends AppCompatActivity {
 
     private Button btnActivate;
     private ImageButton returnButton;
@@ -35,7 +35,7 @@ public class alarmPage extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_alarm_page);
+        setContentView(R.layout.activity_set_alarm);
 
         btnActivate = findViewById(R.id.activateButton);
         returnButton =  findViewById(R.id.return_button);
@@ -44,7 +44,7 @@ public class alarmPage extends AppCompatActivity {
         returnButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(alarmPage.this, optionsPage.class);
+                Intent intent = new Intent(setAlarm.this, UserOptions.class);
                 startActivity(intent);
 
                 try {

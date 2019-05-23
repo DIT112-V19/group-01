@@ -9,19 +9,18 @@ import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.Toast;
 
-import java.io.IOException;
 import java.nio.charset.Charset;
 
 import static com.example.myapplication.BluetoothConnectionService.write;
 
-public class optionsPage extends AppCompatActivity {
+public class UserOptions extends AppCompatActivity {
 
     private Button alarm;
     private Button play;
     private ImageButton returnButton;
 
 
-    public static final String TAG = "optionsPage";
+    public static final String TAG = "UserOptions";
 
     public void initialize() {
         play = findViewById(R.id.play);
@@ -31,7 +30,7 @@ public class optionsPage extends AppCompatActivity {
         returnButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(optionsPage.this,MainActivity.class);
+                Intent intent = new Intent(UserOptions.this, StartConnection.class);
                 startActivity(intent);
             }
         });
@@ -46,11 +45,11 @@ public class optionsPage extends AppCompatActivity {
                     write(bytes);
                     Log.d(TAG, "char z sent to arduino mega");
                 }catch(Exception e ){
-                    Toast.makeText(optionsPage.this, "Unable to connect device", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(UserOptions.this, "Unable to connect device", Toast.LENGTH_SHORT).show();
                 }
 
 
-                Intent intent = new Intent(optionsPage.this, operatePage.class);
+                Intent intent = new Intent(UserOptions.this, OperateManually.class);
                 startActivity(intent);
             }
         });
@@ -58,7 +57,7 @@ public class optionsPage extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                Intent intent = new Intent(optionsPage.this, alarmPage.class);
+                Intent intent = new Intent(UserOptions.this, setAlarm.class);
                 startActivity(intent);
             }
         });
@@ -67,7 +66,7 @@ public class optionsPage extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_options_page);
+        setContentView(R.layout.activity_user_options);
 
         initialize();
     }

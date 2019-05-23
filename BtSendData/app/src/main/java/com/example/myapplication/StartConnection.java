@@ -14,18 +14,14 @@ import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.Button;
-import android.widget.EditText;
-import android.widget.ImageButton;
 import android.widget.ListView;
-import android.widget.Toast;
 
-import java.nio.charset.Charset;
 import java.util.ArrayList;
 import java.util.UUID;
 
 
-public class MainActivity extends AppCompatActivity implements AdapterView.OnItemClickListener {
-    private static final String TAG = "MainActivity";
+public class StartConnection extends AppCompatActivity implements AdapterView.OnItemClickListener {
+    private static final String TAG = "StartConnection";
 
     BluetoothAdapter mBluetoothAdapter;
     Button btnEnableDisable_Discoverable;
@@ -178,7 +174,7 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_start_connection);
         Button btnONOFF =  findViewById(R.id.btnONOFF);
         btnEnableDisable_Discoverable = findViewById(R.id.btnDiscoverable_on_off);
         lvNewDevices =  findViewById(R.id.lvNewDevices);
@@ -197,14 +193,14 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
 
         mBluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
 
-        lvNewDevices.setOnItemClickListener(MainActivity.this);
+        lvNewDevices.setOnItemClickListener(StartConnection.this);
 
 
-        // This button takes us to the optionsPage
+        // This button takes us to the UserOptions
         Continue.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(MainActivity.this, optionsPage.class);
+                Intent intent = new Intent(StartConnection.this, UserOptions.class);
                 startActivity(intent);
             }
         });
@@ -222,7 +218,7 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
             public void onClick(View view) {
                 startConnection();
 
-               // Toast.makeText(MainActivity.this, "Connected to " + mBTDevice.getName(), Toast.LENGTH_SHORT).show();
+               // Toast.makeText(StartConnection.this, "Connected to " + mBTDevice.getName(), Toast.LENGTH_SHORT).show();
             }
         });
 
@@ -348,7 +344,7 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
             Log.d(TAG, "Trying to pair with " + deviceName);
             mBTDevices.get(i).createBond();
             mBTDevice = mBTDevices.get(i);
-            mBluetoothConnection = new BluetoothConnectionService(MainActivity.this);
+            mBluetoothConnection = new BluetoothConnectionService(StartConnection.this);
         }
     }
 }

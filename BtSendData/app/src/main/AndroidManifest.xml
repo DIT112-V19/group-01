@@ -20,12 +20,12 @@
 
             <category android:name="android.intent.category.LAUNCHER" />
         </intent-filter></activity>
-        <activity android:name=".operatePage" />
-        <activity android:name=".alarmPage" />
-        <activity android:name=".optionsPage">
+        <activity android:name=".OperateManually" />
+        <activity android:name=".setAlarm" />
+        <activity android:name=".UserOptions">
 
         </activity>
-        <activity android:name=".MainActivity" />
+        <activity android:name=".StartConnection" />
     </application>
 
 </manifest>
