@@ -27,7 +27,7 @@ bool exitManualControl = false;
 
 
 //declaring pins for ultrasonic sensors
-//const int TRIGGER_PIN_REAR_SENSOR = A4;
+const int TRIGGER_PIN_REAR_SENSOR = A4;
 const int ECHO_PIN_REAR_SENSOR = A5;
 
 //variables for the front sensor
@@ -36,7 +36,7 @@ const int ECHO_PIN_FRONT_SENSOR = 6; //D5
 
 const unsigned int MAX_DISTANCE = 30;
 
-//SR04 back (TRIGGER_PIN_REAR_SENSOR, ECHO_PIN_REAR_SENSOR, MAX_DISTANCE);
+SR04 back (TRIGGER_PIN_REAR_SENSOR, ECHO_PIN_REAR_SENSOR, MAX_DISTANCE);
 SR04 front(TRIGGER_PIN_FRONT_SENSOR, ECHO_PIN_FRONT_SENSOR, MAX_DISTANCE);
 
 //setting variables to 0 so they'll give correct value
@@ -74,15 +74,16 @@ void loop() {
     case 'f':
     buttonIsPressed = false;
     while (buttonIsPressed == false) {
-      automaticObstacleAvoidance();
-      checkIfButtonIsPressed();
+    automaticObstacleAvoidance();
+		checkIfButtonIsPressed();
+	  doRear();
     }
     break;
 
     case 'z':
     exitManualControl = false;
     while (exitManualControl == false ){
-      carManualControl();
+    carManualControl();
     }
     break;
   }
@@ -97,6 +98,14 @@ void automaticObstacleAvoidance(){
     stopCar();
     changeRandomDirection();
   }
+}
+
+//code entered here will be executed if the rear sensor is triggered
+void doRear() {
+	if (back.getDistance() < MAX_DISTANCE && back.getDistance() > 0) {
+		changeDirectionLeft();
+		checkIfButtonIsPressed();
+	}
 }
 
 void checkIfButtonIsPressed(){
@@ -173,7 +182,7 @@ void changeDirectionRight() {
   //Arguments(leftMotor speed capacity, rightMotor speed capacity)
   car.overrideMotorSpeed(50, -50);
   //delay so the car has enough time to turn
-  delay(150);
+  delay(300);
   stopCar();
 }
 
@@ -181,7 +190,7 @@ void changeDirectionLeft() {
   //Arguments(leftMotor speed capacity, rightMotor speed capacity)
   car.overrideMotorSpeed(-50, 50);
   //delay so the car has enough time to turn
-  delay(150);
+  delay(300);
   stopCar();
 }
 
@@ -199,23 +208,6 @@ void setCarMoveBackwards(){
 
 void stopCar(){
   car.overrideMotorSpeed(0, 0);
-}
-//void measureDistanceBack(){
-//distanceBack = back.getDistance();
-//Serial.println(distanceBack);
-//}
-
-void measureDistanceFront(){
-  distanceFront = front.getDistance();
-  Serial.print(distanceFront);
-}
-
-void displayDistances(){
-
-  Serial.print("\t Front :");
-  measureDistanceFront();
-  Serial.print("\t Rear : ");
-  // measureDistanceBack();
 }
 
 // Get sensor distance measurement, in centimetre
