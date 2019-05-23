@@ -27,7 +27,7 @@ bool exitManualControl = false;
 
 
 //declaring pins for ultrasonic sensors
-//const int TRIGGER_PIN_REAR_SENSOR = A4;
+const int TRIGGER_PIN_REAR_SENSOR = A4;
 const int ECHO_PIN_REAR_SENSOR = A5;
 
 //variables for the front sensor
@@ -36,7 +36,7 @@ const int ECHO_PIN_FRONT_SENSOR = 6; //D5
 
 const unsigned int MAX_DISTANCE = 30;
 
-//SR04 back (TRIGGER_PIN_REAR_SENSOR, ECHO_PIN_REAR_SENSOR, MAX_DISTANCE);
+SR04 back (TRIGGER_PIN_REAR_SENSOR, ECHO_PIN_REAR_SENSOR, MAX_DISTANCE);
 SR04 front(TRIGGER_PIN_FRONT_SENSOR, ECHO_PIN_FRONT_SENSOR, MAX_DISTANCE);
 
 //setting variables to 0 so they'll give correct value
@@ -76,6 +76,7 @@ void loop() {
     while (buttonIsPressed == false) {
       automaticObstacleAvoidance();
       checkIfButtonIsPressed();
+	  doRear();
     }
     break;
 
@@ -97,6 +98,13 @@ void automaticObstacleAvoidance(){
     stopCar();
     changeRandomDirection();
   }
+}
+
+void doRear() {
+	if (back.getDistance() < MAX_DISTANCE && back.getDistance() > 0) {
+		stopCar();
+		delay(2000);
+	}
 }
 
 void checkIfButtonIsPressed(){
@@ -173,7 +181,7 @@ void changeDirectionRight() {
   //Arguments(leftMotor speed capacity, rightMotor speed capacity)
   car.overrideMotorSpeed(50, -50);
   //delay so the car has enough time to turn
-  delay(150);
+  delay(300);
   stopCar();
 }
 
@@ -181,7 +189,7 @@ void changeDirectionLeft() {
   //Arguments(leftMotor speed capacity, rightMotor speed capacity)
   car.overrideMotorSpeed(-50, 50);
   //delay so the car has enough time to turn
-  delay(150);
+  delay(300);
   stopCar();
 }
 
