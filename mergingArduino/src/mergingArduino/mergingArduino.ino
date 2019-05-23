@@ -209,23 +209,6 @@ void setCarMoveBackwards(){
 void stopCar(){
   car.overrideMotorSpeed(0, 0);
 }
-//void measureDistanceBack(){
-//distanceBack = back.getDistance();
-//Serial.println(distanceBack);
-//}
-
-void measureDistanceFront(){
-  distanceFront = front.getDistance();
-  Serial.print(distanceFront);
-}
-
-void displayDistances(){
-
-  Serial.print("\t Front :");
-  measureDistanceFront();
-  Serial.print("\t Rear : ");
-  // measureDistanceBack();
-}
 
 // Get sensor distance measurement, in centimetre
 void measureDistance(){
