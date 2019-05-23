@@ -75,7 +75,7 @@ void loop() {
     buttonIsPressed = false;
     while (buttonIsPressed == false) {
       automaticObstacleAvoidance();
-      checkIfButtonIsPressed();
+		checkIfButtonIsPressed();
 	  doRear();
     }
     break;
@@ -102,8 +102,8 @@ void automaticObstacleAvoidance(){
 
 void doRear() {
 	if (back.getDistance() < MAX_DISTANCE && back.getDistance() > 0) {
-		stopCar();
-		delay(2000);
+		changeDirectionLeft();
+		checkIfButtonIsPressed();
 	}
 }
 
