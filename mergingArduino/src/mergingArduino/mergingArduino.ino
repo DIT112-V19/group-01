@@ -74,7 +74,7 @@ void loop() {
     case 'f':
     buttonIsPressed = false;
     while (buttonIsPressed == false) {
-      automaticObstacleAvoidance();
+    automaticObstacleAvoidance();
 		checkIfButtonIsPressed();
 	  doRear();
     }
@@ -83,7 +83,7 @@ void loop() {
     case 'z':
     exitManualControl = false;
     while (exitManualControl == false ){
-      carManualControl();
+    carManualControl();
     }
     break;
   }
@@ -100,6 +100,7 @@ void automaticObstacleAvoidance(){
   }
 }
 
+//code entered here will be executed if the rear sensor is triggered
 void doRear() {
 	if (back.getDistance() < MAX_DISTANCE && back.getDistance() > 0) {
 		changeDirectionLeft();
