@@ -18,7 +18,7 @@ import java.util.TimerTask;
 
 import static com.example.myapplication.BluetoothConnectionService.write;
 
-public class alarmPage extends AppCompatActivity {
+public class SetAlarm extends AppCompatActivity {
 
     private Button btnActivate;
     private ImageButton returnButton;
@@ -35,16 +35,16 @@ public class alarmPage extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_alarm_page);
+        setContentView(R.layout.activity_set_alarm);
 
         btnActivate = findViewById(R.id.activateButton);
-        returnButton =  findViewById(R.id.return_button);
-        setAlarmButton =  findViewById(R.id.set_Alarm_button);
+        returnButton = findViewById(R.id.return_button);
+        setAlarmButton = findViewById(R.id.set_Alarm_button);
 
         returnButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(alarmPage.this, optionsPage.class);
+                Intent intent = new Intent(SetAlarm.this, UserOptions.class);
                 startActivity(intent);
 
                 try {
@@ -68,13 +68,12 @@ public class alarmPage extends AppCompatActivity {
         btnActivate.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                try{
-                String activateMode = "f";
-                byte[] bytes = activateMode.getBytes(Charset.defaultCharset());
-                write(bytes);
-                Log.d(TAG, "Button f pressed");
-                   }
-                catch (Exception e){
+                try {
+                    String activateMode = "f";
+                    byte[] bytes = activateMode.getBytes(Charset.defaultCharset());
+                    write(bytes);
+                    Log.d(TAG, "Button f pressed");
+                } catch (Exception e) {
                     toastMessage("Reconnect bluetooth");
                 }
             }
@@ -96,17 +95,18 @@ public class alarmPage extends AppCompatActivity {
                 //the use of a boolean
                 if (alarmHasBeenSet && simpleDateFormat.format(calender.getTime()).equals(AlarmTime()) && !alarmPlayed) {
 
-                        String activateMode = "f";
-                        byte[] bytes = activateMode.getBytes(Charset.defaultCharset());
-                        write(bytes);
-                        Log.d(TAG, "Button f pressed");
-                        alarmPlayed = true;
+                    String activateMode = "f";
+                    byte[] bytes = activateMode.getBytes(Charset.defaultCharset());
+                    write(bytes);
+                    Log.d(TAG, "Button f pressed");
+                    alarmPlayed = true;
                 }
             }
             //delay = when does it start comparing, period = how often does it compare, 1000 ms = 1 sec
         }, 0, 1000);
     }
-    public String AlarmTime(){
+
+    public String AlarmTime() {
 
         int alarmHours = alarmTime.getHour();
         int alarmMinutes = alarmTime.getMinute();
@@ -115,14 +115,14 @@ public class alarmPage extends AppCompatActivity {
         String stringAlarmMinutes;
         String stringAlarmHours;
 
-        if(alarmMinutes < 10) {
+        if (alarmMinutes < 10) {
             stringAlarmMinutes = "0";
             stringAlarmMinutes = stringAlarmMinutes.concat(Integer.toString(alarmMinutes));
         } else {
             stringAlarmMinutes = Integer.toString(alarmMinutes);
         }
 
-        if(alarmHours < 10) {
+        if (alarmHours < 10) {
             stringAlarmHours = "0";
             stringAlarmHours = stringAlarmHours.concat(Integer.toString(alarmHours));
         } else {
@@ -133,7 +133,6 @@ public class alarmPage extends AppCompatActivity {
 
         return stringAlarmTime;
     }
-
 
 
     private void toastMessage(String message) {

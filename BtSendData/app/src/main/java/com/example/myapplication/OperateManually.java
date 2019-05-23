@@ -1,7 +1,6 @@
 package com.example.myapplication;
 
 import android.content.Intent;
-import android.media.Image;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -13,10 +12,10 @@ import java.nio.charset.Charset;
 
 import static com.example.myapplication.BluetoothConnectionService.write;
 
-public class operatePage extends AppCompatActivity {
+public class OperateManually extends AppCompatActivity {
 
 
-    private static final String TAG = "operatePage";
+    private static final String TAG = "OperateManually";
     private ImageButton upward_arrow;
     private ImageButton downward_arrow;
     private ImageButton left_arrow;
@@ -27,7 +26,7 @@ public class operatePage extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_operate_page);
+        setContentView(R.layout.activity_operate_manually);
 
 
         upward_arrow = findViewById(R.id.arrows_UP);
@@ -42,7 +41,7 @@ public class operatePage extends AppCompatActivity {
         returnButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(operatePage.this, optionsPage.class);
+                Intent intent = new Intent(OperateManually.this, UserOptions.class);
                 startActivity(intent);
 
                 try {
@@ -130,6 +129,6 @@ public class operatePage extends AppCompatActivity {
 
     //for readability , call this method in methods to avoid passing three arguments each time (just one String message instead)
     public void toastMessage(String message) {
-        Toast.makeText(operatePage.this, message, Toast.LENGTH_SHORT).show();
+        Toast.makeText(OperateManually.this, message, Toast.LENGTH_SHORT).show();
     }
 }

@@ -2,15 +2,14 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/activity_main"
-
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/background"
     android:paddingLeft="16dp"
     android:paddingTop="16dp"
     android:paddingRight="16dp"
     android:paddingBottom="16dp"
-    tools:context=".MainActivity"
-    android:background="@drawable/background"
+    tools:context=".StartConnection"
 
     >
 
@@ -19,23 +18,22 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginLeft="15dp"
-        android:text="@string/on_off"
-      android:layout_toRightOf="@+id/btnDiscoverable_on_off"
-        android:layout_marginRight="30dp"
         android:layout_marginTop="15dp"
-        android:textSize="16sp"
-        android:textColor="#FFFFFF"
+        android:layout_marginRight="30dp"
+        android:layout_toRightOf="@+id/btnDiscoverable_on_off"
         android:background="@drawable/custom_button2"
+        android:text="@string/on_off"
         android:textAllCaps="false"
-        />
+        android:textColor="#FFFFFF"
+        android:textSize="16sp" />
 
     <Button
         android:id="@+id/btnDiscoverable_on_off"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginLeft="15dp"
         android:layout_marginTop="15dp"
         android:layout_toRightOf="@+id/btnFindUnpairedDevices"
-        android:layout_marginLeft="15dp"
         android:background="@drawable/custom_button2"
         android:onClick="btnEnableDisable_Discoverable"
         android:text="@string/enable_discoverable"
@@ -47,14 +45,13 @@
         android:id="@+id/btnFindUnpairedDevices"
         android:layout_width="130dp"
         android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:background="@drawable/custom_button2"
         android:onClick="btnDiscover"
         android:text="@string/discover"
-        android:layout_marginTop="15dp"
-        android:textSize="16sp"
-        android:textColor="#FFFFFF"
-        android:background="@drawable/custom_button2"
         android:textAllCaps="false"
-        />
+        android:textColor="#FFFFFF"
+        android:textSize="16sp" />
 
 
     <ListView
@@ -63,7 +60,7 @@
         android:layout_height="250dp"
         android:layout_below="@+id/btnFindUnpairedDevices"
         android:layout_marginTop="47dp"
-        android:background="@color/white"/>
+        android:background="@color/white" />
 
     <Button
         android:id="@+id/btnStartConnection"
@@ -71,14 +68,13 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/lvNewDevices"
         android:layout_marginTop="15dp"
-        android:text="@string/start_connection"
-        android:textSize="16sp"
-        android:textColor="#FFFFFF"
         android:background="@drawable/custom_button2"
+        android:text="@string/start_connection"
         android:textAllCaps="false"
+        android:textColor="#FFFFFF"
+        android:textSize="16sp"
 
         />
-
 
 
     <Button
@@ -87,13 +83,12 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/lvNewDevices"
         android:layout_centerHorizontal="true"
-       android:layout_marginTop="100dp"
+        android:layout_marginTop="100dp"
         android:background="@drawable/custom_button"
         android:text="@string/Continue"
         android:textAllCaps="false"
         android:textColor="#FFFFFF"
         android:textSize="16sp" />
-
 
 
 </RelativeLayout>
