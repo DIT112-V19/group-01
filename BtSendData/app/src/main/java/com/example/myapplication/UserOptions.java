@@ -27,6 +27,7 @@ public class UserOptions extends AppCompatActivity {
         alarm = findViewById(R.id.alarm);
         returnButton = findViewById(R.id.return_button);
 
+
         returnButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -44,7 +45,7 @@ public class UserOptions extends AppCompatActivity {
                     byte[] bytes = playOperateManually.getBytes(Charset.defaultCharset());
                     write(bytes);
                     Log.d(TAG, "char z sent to arduino mega");
-                }catch(Exception e ){
+                } catch (Exception e) {
                     Toast.makeText(UserOptions.this, "Unable to connect device", Toast.LENGTH_SHORT).show();
                 }
 

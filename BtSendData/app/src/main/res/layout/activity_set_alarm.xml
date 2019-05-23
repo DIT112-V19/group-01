@@ -6,9 +6,7 @@
     android:layout_height="match_parent"
 
     android:background="@drawable/background"
-    tools:context=".setAlarm"
-  >
-
+    tools:context=".setAlarm">
 
 
     <TimePicker
@@ -24,8 +22,6 @@
     </TimePicker>
 
 
-
-
     <Button
         android:id="@+id/activateButton"
         android:layout_width="130dp"
@@ -33,36 +29,32 @@
         android:layout_below="@+id/set_Alarm_button"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="50dp"
-        android:textSize="20sp"
-        android:textColor="#FFFFFF"
         android:background="@drawable/custom_button2"
+        android:text="@string/activate"
         android:textAllCaps="false"
-        android:text="Activate" />
-
-
+        android:textColor="#FFFFFF"
+        android:textSize="20sp" />
 
 
     <ImageButton
         android:id="@+id/return_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="15dp"
         android:layout_marginLeft="15dp"
-        android:src="@drawable/returnbutton"/>
+        android:layout_marginTop="15dp"
+        android:src="@drawable/returnbutton" />
 
     <Button
         android:id="@+id/set_Alarm_button"
         android:layout_width="130dp"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
-     android:layout_marginTop="400dp"
-        android:text="set alarm "
-        android:textSize="20sp"
-        android:textColor="#FFFFFF"
+        android:layout_marginTop="400dp"
         android:background="@drawable/custom_button2"
+        android:text="@string/set_alarm"
         android:textAllCaps="false"
-        />
-
+        android:textColor="#FFFFFF"
+        android:textSize="20sp" />
 
 
 </RelativeLayout>

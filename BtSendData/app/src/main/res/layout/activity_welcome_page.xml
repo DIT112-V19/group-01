@@ -16,15 +16,15 @@
         android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginBottom="8dp"
+        android:background="@drawable/custom_button"
+        android:text="@string/connect"
+        android:textAllCaps="false"
+        android:textColor="#FFFFFF"
+        android:textSize="20sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        android:text="@string/connect"
-        android:textSize="20sp"
-        android:textColor="#FFFFFF"
-        android:background="@drawable/custom_button"
-        android:textAllCaps="false"
 
         />
 
@@ -44,9 +44,9 @@
         android:id="@+id/textsplash"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="150dp"
+        android:layout_marginEnd="8dp"
         android:elevation="6dp"
         android:gravity="center"
         android:orientation="vertical"
@@ -62,26 +62,20 @@
             android:textSize="34dp" />
 
 
-
     </LinearLayout>
 
-
-
-
-    //if we set android:background="@drawable/background" what is the difference of using this ? looks like a lot of code :)
     <ImageView
         android:id="@+id/bgapp"
         android:layout_width="526dp"
         android:layout_height="900dp"
-        android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
         android:scaleType="fitXY"
         android:src="@drawable/bgapp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.923"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
-
 
 
 </android.support.constraint.ConstraintLayout>

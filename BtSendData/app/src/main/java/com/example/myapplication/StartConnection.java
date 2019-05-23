@@ -21,27 +21,21 @@ import java.util.UUID;
 
 
 public class StartConnection extends AppCompatActivity implements AdapterView.OnItemClickListener {
+
     private static final String TAG = "StartConnection";
-
-    BluetoothAdapter mBluetoothAdapter;
-    Button btnEnableDisable_Discoverable;
-    BluetoothConnectionService mBluetoothConnection;
-    Button btnStartConnection;
-    Button Continue;
-
-
+    private BluetoothAdapter mBluetoothAdapter;
+    private Button btnEnableDisable_Discoverable;
+    private BluetoothConnectionService mBluetoothConnection;
+    private Button btnStartConnection;
+    private Button Continue;
+    public ArrayList<BluetoothDevice> mBTDevices = new ArrayList<>();
+    public DeviceListAdapter mDeviceListAdapter;
+    BluetoothDevice mBTDevice;
+    ListView lvNewDevices;
     /* Universally unique identifier used to configure and establish bluetooth connection*/
     private static final UUID MY_UUID_INSECURE =
-            //UUID.fromString("075efdf0-199f-43ac-b643-90cb838b2e49");
+
             UUID.fromString("00001101-0000-1000-8000-00805F9B34FB");
-
-    BluetoothDevice mBTDevice;
-
-    public ArrayList<BluetoothDevice> mBTDevices = new ArrayList<>();
-
-    public DeviceListAdapter mDeviceListAdapter;
-
-    ListView lvNewDevices;
 
 
     // Create a BroadcastReceiver for ACTION_FOUND
@@ -119,13 +113,13 @@ public class StartConnection extends AppCompatActivity implements AdapterView.On
             final String action = intent.getAction();
             Log.d(TAG, "onReceive: ACTION FOUND.");
 
-            if (action.equals(BluetoothDevice.ACTION_FOUND) ) {
+            if (action.equals(BluetoothDevice.ACTION_FOUND)) {
                 BluetoothDevice device = intent.getParcelableExtra(BluetoothDevice.EXTRA_DEVICE);
 
-                    mBTDevices.add(device);
-                    Log.d(TAG, "onReceive: " + device.getName() + ": " + device.getAddress());
-                    mDeviceListAdapter = new DeviceListAdapter(context, R.layout.device_adapter_view, mBTDevices);
-                    lvNewDevices.setAdapter(mDeviceListAdapter);
+                mBTDevices.add(device);
+                Log.d(TAG, "onReceive: " + device.getName() + ": " + device.getAddress());
+                mDeviceListAdapter = new DeviceListAdapter(context, R.layout.device_adapter_view, mBTDevices);
+                lvNewDevices.setAdapter(mDeviceListAdapter);
 
             }
         }
@@ -175,17 +169,17 @@ public class StartConnection extends AppCompatActivity implements AdapterView.On
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_start_connection);
-        Button btnONOFF =  findViewById(R.id.btnONOFF);
+        Button btnONOFF = findViewById(R.id.btnONOFF);
         btnEnableDisable_Discoverable = findViewById(R.id.btnDiscoverable_on_off);
-        lvNewDevices =  findViewById(R.id.lvNewDevices);
+        lvNewDevices = findViewById(R.id.lvNewDevices);
         mBTDevices = new ArrayList<>();
         Continue = findViewById(R.id.Continue);
-        btnStartConnection =  findViewById(R.id.btnStartConnection);
+        btnStartConnection = findViewById(R.id.btnStartConnection);
 
         /** used for testing
-        * btnSend = (Button) findViewById(R.id.btnSend);
-        * etSend = (EditText) findViewById(R.id.editText);
-        */
+         * btnSend = (Button) findViewById(R.id.btnSend);
+         * etSend = (EditText) findViewById(R.id.editText);
+         */
 
         //Broadcasts when bond state changes (ie:pairing)
         IntentFilter filter = new IntentFilter(BluetoothDevice.ACTION_BOND_STATE_CHANGED);
@@ -218,18 +212,18 @@ public class StartConnection extends AppCompatActivity implements AdapterView.On
             public void onClick(View view) {
                 startConnection();
 
-               // Toast.makeText(StartConnection.this, "Connected to " + mBTDevice.getName(), Toast.LENGTH_SHORT).show();
+                // Toast.makeText(StartConnection.this, "Connected to " + mBTDevice.getName(), Toast.LENGTH_SHORT).show();
             }
         });
 
         /**testing purposes
-        * btnSend.setOnClickListener(new View.OnClickListener() {
-        *    @Override
-        *    public void onClick(View view) {
-        *        byte[] bytes = etSend.getText().toString().getBytes(Charset.defaultCharset());
-        *        mBluetoothConnection.write(bytes);
-        *    }
-        * });
+         * btnSend.setOnClickListener(new View.OnClickListener() {
+         *    @Override
+         *    public void onClick(View view) {
+         *        byte[] bytes = etSend.getText().toString().getBytes(Charset.defaultCharset());
+         *        mBluetoothConnection.write(bytes);
+         *    }
+         * });
          */
     }
 

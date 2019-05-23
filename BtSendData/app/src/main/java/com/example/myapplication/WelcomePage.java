@@ -9,20 +9,21 @@ import android.widget.Button;
 public class WelcomePage extends AppCompatActivity {
 
 
-Button connect;
+    Button connect;
 
-public void initialize (){
-    connect = findViewById(R.id.connectButton);
+    public void initialize() {
 
-    connect.setOnClickListener(new View.OnClickListener() {
-        @Override
-        public void onClick(View v) {
-            Intent intent = new Intent(WelcomePage.this, StartConnection.class);
-           startActivity(intent);
+        connect = findViewById(R.id.connectButton);
 
-        }
-    });
-}
+        connect.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(WelcomePage.this, StartConnection.class);
+                startActivity(intent);
+
+            }
+        });
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
