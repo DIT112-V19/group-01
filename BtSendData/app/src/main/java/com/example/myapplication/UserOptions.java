@@ -58,7 +58,7 @@ public class UserOptions extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                Intent intent = new Intent(UserOptions.this, setAlarm.class);
+                Intent intent = new Intent(UserOptions.this, SetAlarm.class);
                 startActivity(intent);
             }
         });
