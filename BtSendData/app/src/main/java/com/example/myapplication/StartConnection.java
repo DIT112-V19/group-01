@@ -110,6 +110,7 @@ public class StartConnection extends AppCompatActivity implements AdapterView.On
     private BroadcastReceiver mBroadcastReceiver3 = new BroadcastReceiver() {
         @Override
         public void onReceive(Context context, Intent intent) {
+            if(mBTDevices.size()<25 ) {
             final String action = intent.getAction();
             Log.d(TAG, "onReceive: ACTION FOUND.");
 
@@ -122,7 +123,7 @@ public class StartConnection extends AppCompatActivity implements AdapterView.On
                 lvNewDevices.setAdapter(mDeviceListAdapter);
 
             }
-        }
+        }}
     };
 
     /**
