@@ -14,7 +14,9 @@ import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.UUID;
@@ -32,6 +34,7 @@ public class StartConnection extends AppCompatActivity implements AdapterView.On
     public DeviceListAdapter mDeviceListAdapter;
     BluetoothDevice mBTDevice;
     ListView lvNewDevices;
+    private ImageButton btnRefresh;
     /* Universally unique identifier used to configure and establish bluetooth connection*/
     private static final UUID MY_UUID_INSECURE =
 
@@ -111,6 +114,9 @@ public class StartConnection extends AppCompatActivity implements AdapterView.On
         @Override
         public void onReceive(Context context, Intent intent) {
             if(mBTDevices.size()<25 ) {
+                if (mBTDevices.size()==25){
+                    Toast.makeText(StartConnection.this, "25 devices found", Toast.LENGTH_SHORT).show();
+                }
             final String action = intent.getAction();
             Log.d(TAG, "onReceive: ACTION FOUND.");
 
@@ -166,17 +172,19 @@ public class StartConnection extends AppCompatActivity implements AdapterView.On
         //mBluetoothAdapter.cancelDiscovery();
     }
 
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_start_connection);
         Button btnONOFF = findViewById(R.id.btnONOFF);
-        btnEnableDisable_Discoverable = findViewById(R.id.btnDiscoverable_on_off);
+       // btnEnableDisable_Discoverable = findViewById(R.id.btnDiscoverable_on_off);
         lvNewDevices = findViewById(R.id.lvNewDevices);
         mBTDevices = new ArrayList<>();
         Continue = findViewById(R.id.Continue);
         btnStartConnection = findViewById(R.id.btnStartConnection);
-
+        btnRefresh = findViewById(R.id.refreshButton);
         /** used for testing
          * btnSend = (Button) findViewById(R.id.btnSend);
          * etSend = (EditText) findViewById(R.id.editText);
@@ -191,6 +199,18 @@ public class StartConnection extends AppCompatActivity implements AdapterView.On
         lvNewDevices.setOnItemClickListener(StartConnection.this);
 
 
+        btnRefresh.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(StartConnection.this,StartConnection.class);
+                startActivity(intent);
+
+
+
+
+
+            }
+        });
         // This button takes us to the UserOptions
         Continue.setOnClickListener(new View.OnClickListener() {
             @Override
