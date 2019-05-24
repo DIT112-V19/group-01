@@ -20,26 +20,35 @@
         android:layout_marginLeft="15dp"
         android:layout_marginTop="15dp"
         android:layout_marginRight="30dp"
-        android:layout_toRightOf="@+id/btnDiscoverable_on_off"
+        android:layout_toRightOf="@+id/btnFindUnpairedDevices"
         android:background="@drawable/custom_button2"
         android:text="@string/on_off"
         android:textAllCaps="false"
         android:textColor="#FFFFFF"
         android:textSize="16sp" />
 
-    <Button
-        android:id="@+id/btnDiscoverable_on_off"
+    <ImageButton
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="15dp"
-        android:layout_marginTop="15dp"
-        android:layout_toRightOf="@+id/btnFindUnpairedDevices"
-        android:background="@drawable/custom_button2"
-        android:onClick="btnEnableDisable_Discoverable"
-        android:text="@string/enable_discoverable"
-        android:textAllCaps="false"
-        android:textColor="#FFFFFF"
-        android:textSize="16sp" />
+         android:layout_toRightOf="@id/btnONOFF"
+        android:layout_marginLeft="30dp"
+        android:id="@+id/refreshButton"
+        android:src="@drawable/refresh"
+        />
+
+    <!--<Button-->
+        <!--android:id="@+id/btnDiscoverable_on_off"-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:layout_marginLeft="15dp"-->
+        <!--android:layout_marginTop="15dp"-->
+        <!--android:layout_toRightOf="@+id/btnFindUnpairedDevices"-->
+        <!--android:background="@drawable/custom_button2"-->
+        <!--android:onClick="btnEnableDisable_Discoverable"-->
+        <!--android:text="@string/enable_discoverable"-->
+        <!--android:textAllCaps="false"-->
+        <!--android:textColor="#FFFFFF"-->
+        <!--android:textSize="16sp" />-->
 
     <Button
         android:id="@+id/btnFindUnpairedDevices"
