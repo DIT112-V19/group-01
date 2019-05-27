@@ -27,15 +27,6 @@
         android:textColor="#FFFFFF"
         android:textSize="16sp" />
 
-    <ImageButton
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-         android:layout_toRightOf="@id/btnONOFF"
-        android:layout_marginLeft="30dp"
-        android:id="@+id/refreshButton"
-        android:src="@drawable/refresh"
-        />
-
     <!--<Button-->
         <!--android:id="@+id/btnDiscoverable_on_off"-->
         <!--android:layout_width="wrap_content"-->

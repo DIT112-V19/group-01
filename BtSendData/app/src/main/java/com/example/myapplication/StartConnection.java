@@ -34,7 +34,6 @@ public class StartConnection extends AppCompatActivity implements AdapterView.On
     public DeviceListAdapter mDeviceListAdapter;
     BluetoothDevice mBTDevice;
     ListView lvNewDevices;
-    private ImageButton btnRefresh;
     /* Universally unique identifier used to configure and establish bluetooth connection*/
     private static final UUID MY_UUID_INSECURE =
 
@@ -184,7 +183,6 @@ public class StartConnection extends AppCompatActivity implements AdapterView.On
         mBTDevices = new ArrayList<>();
         Continue = findViewById(R.id.Continue);
         btnStartConnection = findViewById(R.id.btnStartConnection);
-        btnRefresh = findViewById(R.id.refreshButton);
         /** used for testing
          * btnSend = (Button) findViewById(R.id.btnSend);
          * etSend = (EditText) findViewById(R.id.editText);
@@ -199,18 +197,6 @@ public class StartConnection extends AppCompatActivity implements AdapterView.On
         lvNewDevices.setOnItemClickListener(StartConnection.this);
 
 
-        btnRefresh.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(StartConnection.this,StartConnection.class);
-                startActivity(intent);
-
-
-
-
-
-            }
-        });
         // This button takes us to the UserOptions
         Continue.setOnClickListener(new View.OnClickListener() {
             @Override
