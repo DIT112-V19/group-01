@@ -2,9 +2,12 @@
 
 ## README
 
+## Contents of the readme
+1. Project description
+2. Installation
+3. User manual
 
-
-### Speedy Carzales Arduino Alarm Car
+### 1. Project description of Speedy Carzales Arduino Alarm Car
 Speedy Carzales is a smartcar, that plays a tone on a certain time, while it drives away from the user and tries to avoid obstacles as well as being turned off.
 Another functionality is the ability to manually operate it.
 The project consists of the Android App and the Arduino Code.
@@ -39,8 +42,14 @@ Tools needed to assemble the car
 
 *Please keep in mind to connect the surge protector with your computer when you plug your arduino in your USB Port. We take no resonsiblity for damage to your hardware, body or any other involved subjects.
 
+## 2. Installation
+1. Download arduino IDE, make sure that the arduino board is connected through a cable
+2. Download android studio IDE
+3. Import the code onto your computer
+4. Upload the code into the arduino using the arduino IDE
+5. Upload the android application on an android device using the android studio IDE
 
-## User manual 
+## 3. User manual 
 1. Turn on the car with the On/Off switch located on the side 
 2. Boot the phone application
 3. Press connect on the welcome page
@@ -55,5 +64,4 @@ Tools needed to assemble the car
 12. "Alarm" : Press activate to immediately set off the alarm
 13. To return at any point in the app, use the return button in the upper left corner
 14. ##### Enjoy ! 
-
 
