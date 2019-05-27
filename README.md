@@ -40,3 +40,20 @@ Tools needed to assemble the car
 *Please keep in mind to connect the surge protector with your computer when you plug your arduino in your USB Port. We take no resonsiblity for damage to your hardware, body or any other involved subjects.
 
 
+## User manual 
+1. Turn on the car with the On/Off switch located on the side 
+2. Boot the phone application
+3. Press connect on the welcome page
+4. Use the on/off button to turn on your bluetooth 
+5. Press discover to find bluetooth devices
+6. Choose your device on the list by tapping on it
+7. Press "start connection"
+8. After getting the message "successfully connected" popped up, press "continue"
+9. Choose between setting the alarm or play with the car 
+10. "play" : Control the car by pressing the buttons (if "reconnect bluetooth" appears, please reconnect)
+11. "Alarm" : Set the alarm by choosing the time on the clock provided. Then click "set alarm" 
+12. "Alarm" : Press activate to immediately set off the alarm
+13. To return at any point in the app, use the return button in the upper left corner
+14. ##### Enjoy ! 
+
+
