@@ -65,3 +65,5 @@ Tools needed to assemble the car
 13. To return at any point in the app, use the return button in the upper left corner
 14. ##### Enjoy ! 
 
+## 4. The PCB
+The PCB was designed in EAGLE CAD. It is used to connect the Ultrasonic Sensors to the Arduino, as well as the button. The cutouts are fitted so it will be able to sit on the smartcarshield, without blocking the Gyroscope or the connections. 
