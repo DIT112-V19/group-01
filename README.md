@@ -6,6 +6,8 @@
 1. Project description
 2. Installation
 3. User manual
+4. The PCB
+5. The video
 
 ### 1. Project description of Speedy Carzales Arduino Alarm Car
 Speedy Carzales is a smartcar, that plays a tone on a certain time, while it drives away from the user and tries to avoid obstacles as well as being turned off.
@@ -67,3 +69,6 @@ Tools needed to assemble the car
 
 ## 4. The PCB
 The PCB was designed in EAGLE CAD. It is used to connect the Ultrasonic Sensors to the Arduino, as well as the button. The cutouts are fitted so it will be able to sit on the smartcarshield, without blocking the Gyroscope or the connections. 
+
+## 5. The video
+Link: https://www.youtube.com/watch?v=jtvX933osug
